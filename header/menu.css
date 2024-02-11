@@ -1,0 +1,96 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+
+
+.home{
+    margin-left: 8vw;
+}
+
+.nav_bar {
+    width: 100%;
+    top: 0;
+    position: fixed;
+  }
+  
+  .nav_bar ul {
+    background-color: rgb(0, 0, 0);
+    list-style-type: none;
+    display: flex;
+    text-align: center;
+    justify-content: left;
+  }
+  
+  .nav_bar ul li {
+    display: inline-table;
+    line-height: 10vh;
+    width: 23vw;
+    height: auto;
+    position: relative;
+  }
+  
+  .nav_bar ul li:hover {
+    background-color: rgb(50, 50, 50);
+    transition: background-color 1s;
+  }
+  
+  .nav_bar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+  }
+  
+  .nav_bar ul li .sub-menu {
+    position: absolute;
+    display: none;
+    top: 100%; /* Add this line to position the submenu below the main menu item */
+    left: 0; /* Add this line to align the submenu with the main menu item */
+  }
+  
+  .nav_bar ul li:hover .sub-menu {
+    display: block;
+    z-index: 3;
+    background-color: rgb(0, 170, 255);
+  }
+  
+  .sub-menu li a:hover {
+    transition: 0.4s;
+    background-color: rgb(0, 208, 255);
+  }
+
+
+.underline-text-small{
+    position: relative;
+    color: white;
+
+}
+
+  
+.underline-text-small:hover {
+    color: white;
+  }
+  
+.underline-text-small::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 30%;
+    height: 0.25vh;
+    left: 8vw;
+    top: 7vh;
+    background-color: rgb(255, 255, 255);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+
+}
+  
+.underline-text-small:hover::before {
+    transform: scaleX(1);
+}
+
+

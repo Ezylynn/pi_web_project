@@ -1,0 +1,260 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+}
+
+
+
+.home{
+    margin-left: 8vw;
+}
+
+.nav_bar {
+    width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 99;
+  }
+  
+  .nav_bar ul {
+    background-color: rgb(96, 100, 238);
+    list-style-type: none;
+    display: flex;
+    text-align: center;
+    justify-content: left;
+  }
+  
+  .nav_bar ul li {
+    display: inline-table;
+    line-height: 10vh;
+    width: 23vw;
+    height:auto;
+    position: relative;
+  }
+  
+  .nav_bar ul li:hover {
+    background-color: rgb(67, 72, 197);
+    transition: background-color 1s;
+  }
+  
+  .nav_bar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+  }
+  
+  .nav_bar ul li .sub-menu {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: height 0.3s ease, opacity 0.3s ease;
+    position: absolute;
+    top: 100%; /* Add this line to position the submenu below the main menu item */
+    left: 0; /* Add this line to align the submenu with the main menu item */
+  }
+
+  
+  .nav_bar ul li:hover .sub-menu {
+    height: auto;
+    opacity: 1;
+    display: block;
+    z-index: 99;
+    background-color: rgb(238, 96, 157);
+    border-radius: 0 0 50px 50px;
+    
+  }
+
+
+
+
+
+  .nav_bar ul li:hover .bottom-li {
+      display: block;
+      z-index: 99;
+      background-color: rgb(238, 96, 157);
+      transition: 0.4s;
+
+     
+    }
+
+  
+.sub-menu li a:hover {
+    transition: 0.4s;
+    background-color: rgb(212, 87, 141);
+  
+}
+
+.sub-menu li:last-child {
+  border-radius: 0 0 50px 50px; /* Rounded bottom corners */
+}
+
+.sub-menu li:last-child a {
+  border-bottom-left-radius: 50px; /* Rounded bottom-left corner */
+  border-bottom-right-radius: 50px; /* Rounded bottom-right corner */
+}
+
+
+.underline-text-small{
+    position: relative;
+    color: white;
+
+}
+
+  
+.underline-text-small:hover {
+    color: white;
+  }
+  
+.underline-text-small::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 30%;
+    height: 0.25vh;
+    left: 8vw;
+    top: 7vh;
+    background-color: rgb(255, 255, 255);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+
+}
+  
+.underline-text-small:hover::before {
+    transform: scaleX(1);
+}
+
+
+.pi{
+    font-size: 30px;
+    font-family: 'Times New Roman';
+  }
+
+
+.title_1{
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 5vh;
+
+}
+
+
+.container{ 
+  margin-top: 5vh;
+  text-align: center;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+
+  backdrop-filter:blur(30px) ;
+  width: 50%;
+  padding: 10vh 3vw 10vh 3vw;
+
+
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
+  }
+
+
+.container form textarea{
+    resize: none;
+    color: white;
+    font-size: 17px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 90%;
+    padding-top: 15px;
+    padding-left: 8px;
+    padding-right: 6px;
+    outline-width: 0;
+}
+
+::placeholder{
+    color: white;
+}
+
+
+
+
+
+
+.submit{
+  margin-top: 5vh;
+    margin-bottom: 2vh;
+    width: 45%;
+    height: 40px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 20px;
+    color: white;
+    transition: 0.5s;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.submit:hover{
+    background-color: white;
+    color: rgb(156, 80, 255);
+    transition: 0.5s;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  .bg{
+    z-index: -1;
+    aspect-ratio: 1439/710;
+    width: 100%;
+    margin-top: 10vh;
+    height: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  
+  }
+  
+  .layer{
+    background-image: url('../../resources/stacked1.svg');
+  }
+
+
+
+
+
+
+
+
+
+  .footer{
+  
+    position: absolute;
+    width: 100vw;
+    height: 20vh;
+    background-color:  rgb(96, 100, 238);
+}
+
+.footer p{
+    font-weight: bolder;
+    color: white;
+    margin-top: 8vh;
+    font-size: 20px;
+    text-align: center;
+
+}
