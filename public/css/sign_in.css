@@ -1,0 +1,177 @@
+
+
+
+
+
+.pi{
+    font-size: 30px;
+    font-family: 'Times New Roman';
+  }
+
+
+.underline-text-small{
+    position: relative;
+    color: white;
+
+}
+
+  
+.underline-text-small:hover {
+    color: white;
+  }
+  
+.underline-text-small::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 30%;
+    height: 0.25vh;
+    left: 8vw;
+    top: 7vh;
+    background-color: rgb(255, 255, 255);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+
+}
+  
+.underline-text-small:hover::before {
+    transform: scaleX(1);
+}
+
+
+.container{
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 27%;
+  height: auto;
+  margin-top: -80vh;
+  margin-left: 67.5vh;
+  z-index: 10;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  border: none;
+  border-radius: 25px;
+  backdrop-filter:blur(100px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.title_1{
+  color: rgb(104, 104, 104);
+  font-size: 35px;
+  font-weight: bolder;
+  text-align: center;
+  margin-bottom: 3vh;
+}
+
+
+input[type="text"], input[type="email"], input[type="password"] {
+  width: 20vw;
+  height: 6vh;
+  margin-bottom: 3vh;
+  padding-right: 0.5vw;
+  padding-left: 0.5vw;
+  padding-top: 0.5vh;
+  border: solid 1px rgb(186, 186, 186);
+  border-radius: 10px;
+  text-indent: 2px;
+  line-height: 50vh;
+  font-size: 17px;
+  color: rgb(97, 97, 97);
+  
+}
+
+
+
+.name::placeholder, .email::placeholder, .pass::placeholder{
+  color: gray;
+  font-size: 17px;
+}
+
+input[type="radio"] {
+  text-align: center;
+  transform: scale(1.1); /* Adjust the scale value as per yer preference */
+  margin-left: 3vw;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.login_prompt{
+  font-size: 20px;
+  font-weight: 650;
+  color:rgb(104, 104, 104);
+  margin-bottom: 1.5vh;
+
+}
+
+.student, .teacher{
+  color: rgb(104, 104, 104);
+  font-weight: 600;
+  font-size: 18px;
+  margin-right: -1vw;
+
+}
+
+.buttons{
+  text-align: center;
+}
+
+button[type="submit"], button[type="reset"]{
+  text-align: center;
+  margin-top: 2vh;
+  width: 60%;
+  height: auto;
+  padding: 1vh 0 1vh 0;
+  font-size: 17px;
+  color: rgb(104, 104, 104);
+  border: solid 1px  rgb(79, 79, 79);
+  background-color: transparent;
+  border-radius: 20px;
+  transition: 0.4s;
+}
+
+
+button[type="submit"]:hover, button[type="reset"]:hover{
+  transition: 0.4s;
+  background-color:  rgb(79, 79, 79);
+  color: white;
+
+}
+
+
+
+
+.bg{
+  z-index: -1;
+  aspect-ratio: 1439/720;
+  width: 100%;
+  margin-top: 10vh;
+  height: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+}
+
+.layer{
+  background-image: url('/images/blob-scene1.svg');
+}
+
+
+.footer{
+    margin-top: 13vh;
+    position: absolute;
+    width: 100vw;
+    height: 20vh;
+    background-color:  rgb(96, 100, 238);
+}
+
+.footer p{
+    font-weight: bolder;
+    color: white;
+    margin-top: 8vh;
+    font-size: 20px;
+    text-align: center;
+
+}
