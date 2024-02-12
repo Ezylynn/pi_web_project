@@ -3,7 +3,7 @@ const {renderInstruction} = require("../controllers/instructionController")
 const instructionRouter = express.Router();
 
 
-instructionRouter.get("/instruction", instructionRouter);
+instructionRouter.get("/instruction", renderInstruction);
 
 
 module.exports = {instructionRouter}

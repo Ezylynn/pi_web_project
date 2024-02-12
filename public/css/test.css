@@ -1,5 +1,6 @@
 
 
+
 .pi{
     font-size: 30px;
     font-family: 'Times New Roman';
@@ -105,7 +106,7 @@
   }
   
   .layer{
-    background-image: url('../../resources/stacked1.svg');
+    background-image: url('/images/stacked1.svg');
   }
 
 
