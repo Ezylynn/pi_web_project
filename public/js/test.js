@@ -5,45 +5,71 @@ const mainElement = document.querySelector("main");
 const instruction = document.querySelector(".instruction");
 const startButton = document.querySelector(".start-quiz");
 const testContainer = document.querySelector(".container");
+const overlayMessage = document.querySelector(".overlay");
+const centeredMessage = document.querySelector(".centered-message")
 let warningTimes = 0;
 
+function makeFullscreen(){
+    return mainElement.requestFullscreen() ||  mainElement.webkitRequestFullscreen() || mainElement.mozRequestFullScreen() || mainElement.mozRequestFullScreen() || mainElement.msRequestFullscreen();
+}
+function redirectToSuspended(){
+    fetch("/api/v1/result/suspended", { method: "POST" })
+                .then(response => {
+                    if (response.redirected) {
+                        window.location.href = response.url; 
+                      } else if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                      }
+                      
+                    })
+                
+                .catch(err => console.error("Error:", err));
+}
 
+function displayWarningMessage(message){
+    overlayMessage.style.display = "flex";
+    centeredMessage.innerText = message
+}
+
+
+document.addEventListener('paste', (event) => {
+    redirectToSuspended()
+   
+});
+document.addEventListener('visibilitychange', () => {
+    redirectToSuspended()
+});
+window.addEventListener('blur', () => {
+    redirectToSuspended()
+});
 startButton.addEventListener("click", () => {
     timer.style.display = "block";
     testContainer.style.display = "block";
     instruction.style.display = "none";
     mainElement.style.display = "block";
     setTimer(0,35,0);
-    mainElement.requestFullscreen() ||  mainElement.webkitRequestFullscreen() || mainElement.mozRequestFullScreen() || mainElement.mozRequestFullScreen() || mainElement.msRequestFullscreen();
+    makeFullscreen();
 } 
 )
 
 document.addEventListener("fullscreenchange", (event) => {
-    if (!document.fullscreenElement) { // Check if the user has exited fullscreen
-        warningTimes++; // Increment the counter
+    if (!document.fullscreenElement) { 
+        warningTimes++; 
         let warningStatement;
         
-        // Provide warnings based on the number of times fullscreen was exited
+        
         if (warningTimes === 1) {
             warningStatement = 'You exited the screen. This is the first warning!';
+            
         } else if (warningTimes === 2) {
             warningStatement = 'You exited the screen. This is the second and last warning!';
+            
         } else {
-            // Make a POST request to the server if fullscreen has been exited more than twice
-            return fetch("/api/v1/result/suspended", { method: "POST" })
-                .then(response => {
-                    if (response.redirected) {
-                        window.location.href = response.url; // Redirect the window to the new URL
-                      } else if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                      }
-                      // Handle additional logic if needed upon successful suspension
-                    })
-                
-                .catch(err => console.error("Error:", err)); // Log any errors that occur during the fetch
+           
+            return redirectToSuspended() 
         }
         
-        alert(warningStatement); // Show the warning message to the user
+        displayWarningMessage(warningStatement)
     }
 });
 
