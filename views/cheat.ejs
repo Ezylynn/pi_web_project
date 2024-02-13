@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instructions</title>
-    <link rel="stylesheet" href="/css/instruction.css">
-    <link rel="stylesheet" href="/css/mainAdmin.css">
+    <title>Quiz</title>
+    
+    <link rel="stylesheet" href="/css/mainUser.css">
     <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/cheat.css">
+    
+    
+    
 </head>
 <body>
     <header class="header">
@@ -15,8 +19,7 @@
         <nav class="nav_bar">
             <ul class="menu">
                 <li class="home">
-                    <!-- the only <li> with a class to move the content across
-                the div without moving both <li> which will create gap -->
+                
                     <a href="/api/v1/home">
                         <p class="underline-text-small">Home</p>
                     </a>
@@ -46,51 +49,16 @@
 
     </header>
 
-
-
-
-    <div class="bg layer"></div> 
-
-
-    <div class="parent_container">
-
-        <div class="container">
-        <p class="title_1">Instructions</p>
-        <ul>
-            <li>You've got [PLACEHOLDER] minutes for this quiz—tick tock!</li>
-            <li>Stick to one tab, no browser-hopping (we've got eyes everywhere...).</li>
-            <li>Cheating's a no-go (why would you even cheat??)</li>
-            <li>Everything you do on the browser will be recorded and be send straight to your teachers to be examine and review (keep it clean, no cheating!).</li>
-            <li>Press the button below to start the quiz</li>
-            <li>After you submitted your answer, wait for further instructions from your teacher</li>
-            <li>Just have fun! (you're just reciting pi numbers, not taking an A-level exam)</li>
-        </ul>
+    <main  class="bg layer">
+        <h1 class = "cheat-message">You have been suspended!</h1>
         
-        <form action="../test/test.html">
-            <button class="start_quiz" type="submit">Start</button>
-        </form>
-
-
-
-
-        </div>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-    <div class="footer">
+      
+    </main>
+    <footer class="footer">
 
         <p>Made by BVIS students</p>
-
-    </div>
     
+    </footer>
 </body>
+
 </html>

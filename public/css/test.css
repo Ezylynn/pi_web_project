@@ -1,4 +1,21 @@
-
+main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+.timer{
+  float: right;
+  margin-right: 3vw;
+  color: white;
+  border: 3px solid white;
+  background-color: rgb(134, 42, 254);
+  border-radius: 2rem;
+  padding: 2rem 3rem;
+  font-size: 2rem;
+  margin-top: 2vh;
+  display: none;
+}
 
 
 .pi{
@@ -30,9 +47,11 @@
 
 
   position: absolute;
+  z-index: 2;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  display: none;
   
   }
 
@@ -89,19 +108,137 @@
 
 
 
+.instruction{
+  width: 50vw;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(150px);
+  
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  z-index: 999;
+  
+  
+
+
+}
+
+
+.instruction-title{
+  text-align: center;
+  font-size: 30px;
+  font-weight:800;
+  color: rgb(83, 83, 83);
+  margin-bottom: 4vh;
+}
+
+
+.instruction ul {
+  margin-left: 3vw;
+  text-align: left;
+  list-style-type: none;
+}
+
+.instruction ul li{
+  font-weight: 500;
+  font-size: 17px;
+  color: rgb(114, 114, 114);
+  margin-bottom: 3vh;
+}
+
+
+
+
+
+.start-quiz {
+background-color:rgb(79, 79, 79);
+border: none;
+color: white;
+text-decoration: none;
+width: 14vw;
+height: 5vh;
+border-radius: 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 23px;
+transition: 0.4s;
+
+}
+
+.start-quiz:hover{
+animation: wiggle 2s linear infinite;
+  transition: 0.4s;
+  background-color: white;
+  color:  rgb(79, 79, 79);
+
+
+
+}
+
+
+.pi{
+font-size: 30px;
+font-family: 'Times New Roman';
+}
+
+
+
+/* Keyframes */
+@keyframes wiggle {
+0%, 7% {
+  transform: rotateZ(0);
+}
+15% {
+  transform: rotateZ(-15deg);
+}
+20% {
+  transform: rotateZ(10deg);
+}
+25% {
+  transform: rotateZ(-10deg);
+}
+30% {
+  transform: rotateZ(6deg);
+}
+35% {
+  transform: rotateZ(-4deg);
+}
+40%, 100% {
+  transform: rotateZ(0);
+}
+}
+
+
+
+
+
+
+
+
 
 
 
 
   .bg{
-    z-index: -1;
+    
     aspect-ratio: 1439/710;
     width: 100%;
-    margin-top: 10vh;
+    margin-top: 7vh;
     height: auto;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    
   
   }
   
@@ -109,16 +246,8 @@
     background-image: url('/images/stacked1.svg');
   }
 
-
-
-
-
-
-
-
-
   .footer{
-  
+    margin-top: -5vh;
     position: absolute;
     width: 100vw;
     height: 20vh;
@@ -133,3 +262,12 @@
     text-align: center;
 
 }
+
+
+
+
+
+
+
+
+

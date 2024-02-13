@@ -1,0 +1,41 @@
+.bg{
+    
+    aspect-ratio: 1439/710;
+    width: 100%;
+    margin-top: 9vh;
+    height: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  
+  }
+  
+  .layer{
+    background-image: url('/images/stacked1.svg');
+  }
+
+  .footer{
+    margin-top: -5vh;
+    position: absolute;
+    width: 100vw;
+    height: 20vh;
+    background-color:  rgb(96, 100, 238);
+}
+
+.footer p{
+    font-weight: bolder;
+    color: white;
+    margin-top: 8vh;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+.cheat-message{
+    color: white;
+    font-size: 3rem;
+}

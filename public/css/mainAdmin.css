@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+main{
+  overflow: scroll;
+}
+
 
 .home{
     margin-left: 8vw;
@@ -132,3 +136,4 @@
 .underline-text-small:hover::before {
     transform: scaleX(1);
 }
+
