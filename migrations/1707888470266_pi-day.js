@@ -14,22 +14,22 @@ exports.up = pgm => {
       created_at: { type: 'timestamp', default: pgm.func('current_timestamp') }
     });
   
-    // Create students_info table
+   
     pgm.createTable('students_info', {
-      student_id: { type: 'integer', primaryKey: true, references: 'users(user_id)' },
+      student_id: { type: 'integer', primaryKey: true, references: 'users(user_id)', onDelete: 'CASCADE'},
       full_name: { type: 'varchar(255)', notNull: true },
       email: { type: 'varchar(255)', unique: true, notNull: true },
       class: { type: 'varchar(50)' }
     });
   
-    // Create teachers_info table
+    
     pgm.createTable('teachers_info', {
-      teacher_id: { type: 'integer', primaryKey: true, references: 'users(user_id)' },
+      teacher_id: { type: 'integer', primaryKey: true, references: 'users(user_id)', onDelete: 'CASCADE'},
       full_name: { type: 'varchar(255)', notNull: true },
       email: { type: 'varchar(255)', unique: true, notNull: true }
     });
   
-    // Create pi_tests table
+   
     pgm.createTable('pi_tests', {
       test_id: { type: 'serial', primaryKey: true },
       test_code: { type: 'varchar(50)', unique: true, notNull: true },
@@ -38,7 +38,7 @@ exports.up = pgm => {
       end_time: { type: 'timestamp' }
     });
   
-    // Create test_results table
+    
     pgm.createTable('test_results', {
       result_id: { type: 'serial', primaryKey: true },
       student_id: { type: 'integer', notNull: true, references: 'users(user_id)' },
@@ -47,10 +47,10 @@ exports.up = pgm => {
       attempt_time: { type: 'timestamp', default: pgm.func('current_timestamp') }
     });
   
-    // Create student_teacher table
+   
     pgm.createTable('student_teacher', {
-      student_id: { type: 'integer', notNull: true, references: 'users(user_id)' },
-      teacher_id: { type: 'integer', notNull: true, references: 'users(user_id)' }
+      student_id: { type: 'integer', notNull: true, references: 'users(user_id)', onDelete: 'CASCADE'},
+      teacher_id: { type: 'integer', notNull: true, references: 'users(user_id)', onDelete: 'CASCADE'}
     }, {
       constraints: {
         primaryKey: ['student_id', 'teacher_id']
@@ -59,7 +59,6 @@ exports.up = pgm => {
   };
   
   exports.down = pgm => {
-    // Drop tables in reverse order of creation
     pgm.dropTable('student_teacher');
     pgm.dropTable('test_results');
     pgm.dropTable('pi_tests');
