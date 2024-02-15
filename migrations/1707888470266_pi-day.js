@@ -1,8 +1,8 @@
 exports.up = pgm => {
-    // Create users table
+    
     pgm.createType('user_role', ['student', 'teacher', 'superadmin']);
 
-    // Create users table
+    
     pgm.createTable('users', {
       user_id: { type: 'serial', primaryKey: true },
       username: { type: 'varchar(255)', unique: true, notNull: true },
