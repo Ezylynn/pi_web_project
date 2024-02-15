@@ -1,9 +1,13 @@
 const redirectToCheat = (req,res) => {
-    res.redirect("/api/v1/result/suspended")
+    const {status} = req.params;
+    res.redirect(`/api/v1/result/${status}`)
+    
 }
 
-const renderCheat = (req,res) => {
-    res.render("cheat")
+const renderResult = (req,res) => {
+    const {status} = req.params;
+    res.render("result", {status})
 }
 
-module.exports = {redirectToCheat, renderCheat}
+
+module.exports = {redirectToCheat, renderResult}

@@ -12,8 +12,8 @@ let warningTimes = 0;
 function makeFullscreen(){
     return mainElement.requestFullscreen() ||  mainElement.webkitRequestFullscreen() || mainElement.mozRequestFullScreen() || mainElement.mozRequestFullScreen() || mainElement.msRequestFullscreen();
 }
-function redirectToSuspended(){
-    fetch("/api/v1/result/suspended", { method: "POST" })
+function redirectToResult(result){
+    fetch(`/api/v1/result/${result}`, { method: "POST" })
                 .then(response => {
                     if (response.redirected) {
                         window.location.href = response.url; 
@@ -33,21 +33,21 @@ function displayWarningMessage(message){
 
 
 document.addEventListener('paste', (event) => {
-    redirectToSuspended()
+    redirectToResult("suspended")
    
 });
 document.addEventListener('visibilitychange', () => {
-    redirectToSuspended()
+    redirectToResult("suspended")
 });
 window.addEventListener('blur', () => {
-    redirectToSuspended()
+    redirectToResult("suspended")
 });
 startButton.addEventListener("click", () => {
     timer.style.display = "block";
     testContainer.style.display = "block";
     instruction.style.display = "none";
     mainElement.style.display = "block";
-    setTimer(0,35,0);
+    setTimer(0,0,15);
     makeFullscreen();
 } 
 )
@@ -66,7 +66,7 @@ document.addEventListener("fullscreenchange", (event) => {
             
         } else {
            
-            return redirectToSuspended() 
+            return redirectToResult("suspended") 
         }
         
         displayWarningMessage(warningStatement)
@@ -94,7 +94,7 @@ function setTimer(hours, minutes, seconds) {
 
         if (distance < 0) {
             clearInterval(x);
-            timer.innerHTML = "DONE";
+        
             form.submit();
         }
         

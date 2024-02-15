@@ -26,15 +26,21 @@
                         <p class="underline-text-small">Home</p>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="../../main/main.html#what_is_pi">
+                        <li>
+                            <a href="/api/v1/home#celebrate-pi-day">
+                                <p class="underline-text-small">Celebrate Pi Day</p>
+                            </a> 
+                        </li>
+                        <li>
+                            <a href="/api/v1/home#what-is-pi">
                                 <p class="underline-text-small">What is <span class="pi">&pi;</span></p>
-                            </a> </li>
-                        <li><a href="">
-                                <p class="underline-text-small">y</p>
-                            </a></li>
-                        <li><a class="bottom_li" href="">
-                                <p class="underline-text-small">Z</p>
-                            </a></li>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="bottom_li" href="https://www.piday.org/">
+                                <p class="underline-text-small">More About Pi Day</p>
+                            </a>
+                        </li>
 
                     </ul>
                 </li>
@@ -59,7 +65,9 @@
     </header>
 
     <main  class="bg layer">
-        <h1 class = "cheat-message">You have been suspended!</h1>
+        
+            <h1 class = "cheat-message"><%= status === "suspended"? "You have been suspended.": "Test Finished."%></h1>
+        
         
       
     </main>

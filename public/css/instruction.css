@@ -6,10 +6,6 @@
 
 
 
-.home{
-    margin-left: 8vw;
-}
-
 .nav_bar {
     width: 100%;
     top: 0;
@@ -246,11 +242,6 @@
     transform: rotateZ(0);
   }
 }
-
-
-
-
-
 
 
 

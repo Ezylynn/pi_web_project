@@ -68,19 +68,6 @@
 
 
 
-.spacer_2{
-  aspect-ratio: 960/100;
-  width: 100%;
-  margin-top: -5vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-.layer_2{
-  background-image: url('/images/wave-haikei_2.svg');
-}
-
 
 .container{
   z-index: 4;

@@ -25,21 +25,34 @@
                         <p class="underline-text-small">Home</p>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="../../main/main.html#what_is_pi">
+                        <li>
+                            <a href="/api/v1/home#celebrate-pi-day">
+                                <p class="underline-text-small">Celebrate Pi Day</p>
+                            </a> 
+                        </li>
+                        <li>
+                            <a href="/api/v1/home#what-is-pi">
                                 <p class="underline-text-small">What is <span class="pi">&pi;</span></p>
-                            </a> </li>
-                        <li><a href="">
-                                <p class="underline-text-small">y</p>
-                            </a></li>
-                        <li><a class="bottom_li" href="">
-                                <p class="underline-text-small">Z</p>
-                            </a></li>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="bottom_li" href="https://www.piday.org/">
+                                <p class="underline-text-small">More About Pi Day</p>
+                            </a>
+                        </li>
 
                     </ul>
                 </li>
                 <li><a href="/api/v1/instruction">
                         <p class="underline-text-small">Quiz</p>
                     </a>
+                </li>
+                <li class = "account" id = "account">
+                    <a href="/api/v1/sign-in" class = "account-link" id = "account-link"><span class="material-symbols-outlined account-logo underline-text-small" id = "account-logo">account_circle</span></a>
+                    <ul class = "account-menu" id = "account-menu">
+                        <li><a href="/api/v1/sign-in" class = "underline-text-small">Sign In</a></li>
+                        <li><a href="/api/v1/register" class = "underline-text-small">Register</a></li>
+                    </ul>
                 </li>
 
             </ul>
@@ -61,7 +74,7 @@
                 Enter as many numbers as you can remember, good luck!
             </p>
 
-            <form action="/api/v1/test" method = "POST">
+            <form action="/api/v1/result/done" method = "POST">
 
                 <textarea class="content" id="" cols="30" rows="10" placeholder="Enter your number here" required></textarea>
 

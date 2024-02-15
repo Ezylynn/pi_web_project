@@ -94,17 +94,6 @@ class User{
     }
 }
 
-User.findByUsername("xi").then(userObj => {
-    console.log(userObj)
-})
-.catch(err => console.error("Error:", err))
-
-
-
-
-
-
-
 
 
 
