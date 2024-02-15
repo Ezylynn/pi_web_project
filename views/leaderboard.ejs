@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard</title>
-    <link rel="stylesheet" href="/css/leaderbord.css">
+    
     <link rel="stylesheet" href="/css/mainAdmin.css">
     <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/leaderbord.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
@@ -44,10 +45,17 @@
                         <p class="underline-text-small">Leaderboard</p>
                     </a>
                 </li>
+                <li class = "account" id = "account">
+                    <a href="/api/v1/sign-in" class = "account-link" id = "account-link"><span class="material-symbols-outlined account-logo underline-text-small" id = "account-logo">account_circle</span></a>
+                    <ul class = "account-menu" id = "account-menu">
+                        <li><a href="/api/v1/sign-in" class = "underline-text-small">Sign In</a></li>
+                        <li><a href="/api/v1/register" class = "underline-text-small">Register</a></li>
+                    </ul>
+                </li>
             </ul>
             
             
-            <p class="user_cf">ADMIN</p>
+            
 
         </nav>
 
@@ -55,10 +63,10 @@
 
     </header>
 
-    <main>
+    <main  class="bg layer">
     
 
-        <section class="bg layer"></section>
+       
 
         <section class="container">
             <section class="table_header">
