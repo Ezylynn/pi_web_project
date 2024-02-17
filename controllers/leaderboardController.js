@@ -1,5 +1,6 @@
 const renderLeaderboard = (req,res) => {
-    res.render("leaderboard")
+    const {userRole} = req.params;
+    res.render("leaderboard", {userRole, user: req.user})
 }
 
 module.exports = {renderLeaderboard}

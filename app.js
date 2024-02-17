@@ -23,7 +23,6 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")))
 app.use("/api/v1", rootRouter);
 
-// app.use(notFound)
 
 app.listen(port, () => {
     console.log(`Server is listening to port ${port}`)

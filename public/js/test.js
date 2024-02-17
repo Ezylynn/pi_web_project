@@ -16,7 +16,7 @@ function makeFullscreen(){
     return mainElement.requestFullscreen() ||  mainElement.webkitRequestFullscreen() || mainElement.mozRequestFullScreen() || mainElement.mozRequestFullScreen() || mainElement.msRequestFullscreen();
 }
 function redirectToResult(result){
-    fetch(`/api/v1/result/${result}`, { method: "POST" })
+    fetch(`/api/v1/student/result/${result}`, { method: "POST" })
                 .then(response => {
                     if (response.redirected) {
                         window.location.href = response.url; 

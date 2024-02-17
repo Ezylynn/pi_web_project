@@ -17,22 +17,21 @@
         <nav class="nav_bar">
             <ul class="menu">
                 <li class="home">
-                    
-                    <a href="/api/v1/home">
+                
+                    <a href="/api/v1/<%= userRole %>/home">
                         <p class="underline-text-small">Home</p>
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="/api/v1/home#celebrate-pi-day">
+                            <a href="/api/v1/<%= userRole %>/home#celebrate-pi-day">
                                 <p class="underline-text-small">Celebrate Pi Day</p>
                             </a> 
                         </li>
                         <li>
-                            <a href="/api/v1/home#what-is-pi">
+                            <a href="/api/v1/<%= userRole %>/home#what-is-pi">
                                 <p class="underline-text-small">What is <span class="pi">&pi;</span></p>
                             </a>
                         </li>
-                        <li>
                             <a class="bottom_li" href="https://www.piday.org/">
                                 <p class="underline-text-small">More About Pi Day</p>
                             </a>
@@ -40,24 +39,43 @@
 
                     </ul>
                 </li>
-                <li>
-                    <a href="/api/v1/leaderboard">
-                        <p class="underline-text-small">Leaderboard</p>
-                    </a>
-                </li>
+                <% if (userRole === "student"){ %>
+                    <li>
+                        <a href="/api/v1/student/instruction">
+                            <p class="underline-text-small">Quiz</p>
+                        </a>
+                    </li>
+                <% }else if (userRole === "teacher"){ %>
+                    <li>
+                        <a href="/api/v1/admin/leaderboard">
+                            <p class="underline-text-small">Leaderboard</p>
+                        </a>
+                    </li>
+                <% } %>
                 <li class = "account" id = "account">
                     <a href="/api/v1/sign-in" class = "account-link" id = "account-link"><span class="material-symbols-outlined account-logo underline-text-small" id = "account-logo">account_circle</span></a>
                     <ul class = "account-menu" id = "account-menu">
-                        <li><a href="/api/v1/sign-in" class = "underline-text-small">Sign In</a></li>
+                        <li>
+                            <% if (user){ %>
+                                <a id = "log-out" class = "underline-text-small">Log Out</a>
+                                <input type="hidden" class = "user-role" value = <%= userRole %>>
+                               
+                            <% }else{ %>
+                                <a href="/api/v1/sign-in" class = "underline-text-small">Sign In</a>
+                                
+                            <% } %>
+
+
+                        </li>
                         <li><a href="/api/v1/register" class = "underline-text-small">Register</a></li>
                     </ul>
                 </li>
+
             </ul>
-            
-            
-            
 
         </nav>
+
+       
 
        
 
@@ -198,6 +216,7 @@
         </footer>
    
     <script type = "module" src = "/js/leaderboard.js"></script>
+    <script type = "module" src = "/js/logOut.js"></script>
 
 </body>
 </html>

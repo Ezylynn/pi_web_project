@@ -1,5 +1,6 @@
 const renderInstruction = (req,res) => {
-    res.render("instruction")
+    const {userRole} = req.params;
+    res.render("instruction", {userRole, user: req.user})
 }
 
 module.exports = {renderInstruction}

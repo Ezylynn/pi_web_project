@@ -19,7 +19,7 @@ exports.up = pgm => {
       student_id: { type: 'integer', primaryKey: true, references: 'users(user_id)', onDelete: 'CASCADE'},
       full_name: { type: 'varchar(255)', notNull: true },
       email: { type: 'varchar(255)', unique: true, notNull: true },
-      class: { type: 'varchar(50)' }
+      grade: { type: 'varchar(50)' }
     });
   
     
@@ -32,8 +32,9 @@ exports.up = pgm => {
    
     pgm.createTable('pi_tests', {
       test_id: { type: 'serial', primaryKey: true },
-      test_code: { type: 'varchar(50)', unique: true, notNull: true },
-      description: { type: 'text' },
+      encrypted_test_code: { type: 'varchar(50)', unique: true, notNull: true },
+      test_date: {type: 'date'},
+      test_name: { type: 'text' },
       start_time: { type: 'timestamp' },
       end_time: { type: 'timestamp' }
     });
@@ -48,18 +49,11 @@ exports.up = pgm => {
     });
   
    
-    pgm.createTable('student_teacher', {
-      student_id: { type: 'integer', notNull: true, references: 'users(user_id)', onDelete: 'CASCADE'},
-      teacher_id: { type: 'integer', notNull: true, references: 'users(user_id)', onDelete: 'CASCADE'}
-    }, {
-      constraints: {
-        primaryKey: ['student_id', 'teacher_id']
-      }
-    });
+    
   };
   
   exports.down = pgm => {
-    pgm.dropTable('student_teacher');
+    
     pgm.dropTable('test_results');
     pgm.dropTable('pi_tests');
     pgm.dropTable('teachers_info');

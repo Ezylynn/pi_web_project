@@ -1,38 +1,31 @@
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-        return next();
+        next();
     } else {
-        res.redirect('/login'); 
+        res.redirect('/api/v1/sign-in'); 
     }
 }
 
-function checkNotAuthenticated(req,res,next){
+const checkNotAuthenticated = (req,res,next) => {
+    
     if (!req.isAuthenticated()) {
-        return next();
+        
+        next();
     } else {
-        res.redirect('/home'); 
+        res.redirect(`/api/v1/${req.user.role}/home`); 
     }
 }
 
 
-function checkAdmin(req, res, next) {
-    
-    if (req.user && req.user.role === 'admin') { //req.user is provided by passport.js after authentication
-        return next();
-    } else {
-        res.status(403).send('Forbidden');
+
+
+const checkRole = (req,res,next) => {
+    if (req.user.role === req.params.userRole){
+        next()
+    }else{
+        res.status(403).redirect("/api/v1/sign-in")
     }
 }
 
-
-function checkSuperAdmin(req, res, next) {
-    
-    if (req.user && req.user.role === 'superadmin') { //req.user is provided by passport.js after authentication
-        return next();
-    } else {
-        res.status(403).send('Forbidden');
-    }
-}
-
-module.exports = { checkAuthenticated,checkNotAuthenticated, checkAdmin, checkSuperAdmin  };
+module.exports = { checkAuthenticated,checkNotAuthenticated, checkRole  };

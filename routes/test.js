@@ -1,11 +1,12 @@
 const express = require('express');
 const {renderTest, finishTest} = require("../controllers/testController")
 const testRouter = express.Router();
+const {checkAuthenticated, checkNotAuthenticated, checkRole} = require("../middleware/checkAuthenticated")
 
 
-testRouter.get("/test", renderTest);
+testRouter.get("/:userRole/test", checkAuthenticated, checkRole, renderTest);
 
-testRouter.post("/test", finishTest)
+testRouter.post("/:userRole/test",checkAuthenticated, checkRole, finishTest)
 
 
 module.exports = {testRouter}

@@ -1,8 +1,11 @@
 const express = require('express');
-const {renderRegister} = require("../controllers/registerController")
+const {renderRegister, createUser} = require("../controllers/registerController")
 const registerRouter = express.Router();
+const {checkAuthenticated, checkNotAuthenticated, checkRole} = require("../middleware/checkAuthenticated")
 
-registerRouter.get("/register", renderRegister)
+registerRouter.get("/register", checkNotAuthenticated, renderRegister);
+
+registerRouter.post("/register", createUser)
 
 
 

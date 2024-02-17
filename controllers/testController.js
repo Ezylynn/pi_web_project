@@ -1,10 +1,12 @@
 const renderTest = (req,res) => {
-    res.render("test")
+    const {userRole} = req.params;
+    res.render("test", {userRole, user: req.user})
 }
 
 const finishTest = (req,res) => {
-    const {answer} = req.body;
-    res.redirect("/api/v1/home")
+   
+    
+    res.redirect("/api/v1/student/home", {user: req.user})
 }
 
 module.exports = {renderTest, finishTest}

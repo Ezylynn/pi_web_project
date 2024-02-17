@@ -8,7 +8,7 @@ class Student{
         this.student_id = data.student_id;
         this.full_name = data.full_name;
         this.email = data.email;
-        this.class = data.class;
+        this.grade = data.grade;
         
         
     }
@@ -18,7 +18,7 @@ class Student{
             const client = await pool.connect();
         try{
             
-            await client.query("INSERT INTO students_info VALUES ($1, $2, $3, $4);", [this.student_id, this.full_name, this.email, this.class]);
+            await client.query("INSERT INTO students_info VALUES ($1, $2, $3, $4);", [this.student_id, this.full_name, this.email, this.grade]);
         }catch(err){
             
             throw err;
@@ -65,6 +65,7 @@ class Student{
         }
     }
 }
+
 
 module.exports = {Student}
 

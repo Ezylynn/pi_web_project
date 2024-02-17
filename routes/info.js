@@ -1,9 +1,10 @@
 const express = require('express');
 const {renderInfo} = require("../controllers/infoController")
+const {checkAuthenticated, checkNotAuthenticated, checkRole} = require("../middleware/checkAuthenticated")
 const infoRouter = express.Router();
 
 
-infoRouter.get("/info", renderInfo);
+infoRouter.get("/:userRole/info",checkAuthenticated,checkRole, renderInfo);
 
 
 module.exports = {infoRouter}

@@ -2,10 +2,97 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>sign-up</title>
+    <link rel="stylesheet" href="/css/register.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+
+    <header class="header">
+
+        <nav class="nav_bar">
+            <ul class="menu">
+                <li class="home">
+                
+                    <a href="/api/v1/user/home">
+                        <p class="underline-text-small">Home</p>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="/api/v1/user/home#celebrate-pi-day">
+                                <p class="underline-text-small">Celebrate Pi Day</p>
+                            </a> 
+                        </li>
+                        <li>
+                            <a href="/api/v1/user/home#what-is-pi">
+                                <p class="underline-text-small">What is <span class="pi">&pi;</span></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="bottom_li" href="https://www.piday.org/">
+                                <p class="underline-text-small">More About Pi Day</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li><a href="/api/v1/user/instruction">
+                        <p class="underline-text-small">Quiz</p>
+                    </a>
+                </li>
+                <li class = "account" id = "account">
+                    <a href="/api/v1/sign-in" class = "account-link" id = "account-link"><span class="material-symbols-outlined account-logo underline-text-small" id = "account-logo">account_circle</span></a>
+                    <ul class = "account-menu" id = "account-menu">
+                        <li><a href="/api/v1/sign-in" class = "underline-text-small">Sign In</a></li>
+                        <li><a href="/api/v1/register" class = "underline-text-small">Register</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            
+            
+            
+
+        </nav>
+
+       
+
+    </header>
+        <main class="bg layer">
+
+            
+            
+            
+            <section class="sign_up_wrapper">
+                <form class="sign_up" action="/api/v1/register" method = "POST">
+                    <h1>Sign up</h1>
+                        <input class="name" name = "fullname" type="text" placeholder="Full name">
+                        <input class="class" name = "grade" type="text" placeholder="Class">
+                        <input class="username" name = "username" type="text" placeholder="Username">
+                        <input class="email" type="text" name = "email" placeholder="Email address" required>
+                        <input class="pass" type="password" name = "password" placeholder="Password" required>
+                        <input type="submit" class="btn" value="Sign up!"> </input>
+                    <p class="already_user">Already A User? <a href="/api/v1/sign-in">Log in here!</a></p>
+                </form>
+
+            </section>
+        </main>
+
+
+
+
+    <footer class="footer">
+
+        <p>Made by BVIS students</p>
+
+    </footer>
+        
+
+
+
     
 </body>
 </html>

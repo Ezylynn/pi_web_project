@@ -40,15 +40,15 @@
 
 
 .container{
-  z-index: 3;
+  
   display: flex;
   justify-content: center;
   align-items: center;
   width: 27%;
   height: auto;
-  margin-top: -80vh;
-  margin-left: 67.5vh;
-  z-index: 10;
+  
+  
+;
   padding-top: 5vh;
   padding-bottom: 5vh;
   border: none;
@@ -143,9 +143,12 @@ button[type="submit"]:hover, button[type="reset"]:hover{
 
 
 .bg{
-  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   aspect-ratio: 1439/720;
-  width: 100%;
+  width: 100vw;
+  height: 70vh;
   margin-top: 10vh;
   height: auto;
   background-repeat: no-repeat;
@@ -160,7 +163,7 @@ button[type="submit"]:hover, button[type="reset"]:hover{
 
 
 .footer{
-    margin-top: 13vh;
+    
     position: absolute;
     width: 100vw;
     height: 20vh;

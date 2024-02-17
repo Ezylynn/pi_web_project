@@ -23,13 +23,13 @@ passport.use(new LocalStrategy(
 
 
 passport.serializeUser((user,done) => {
-    done(null, user.id)
+    done(null, user.user_id)
 })
 
 passport.deserializeUser(async (id, done) => {
     try{
-        const userId = await User.findById(id);
-        done(null, userId);
+        const user = await User.findById(id);
+        done(null, user);
     }catch(err){
         done(err);
     }
