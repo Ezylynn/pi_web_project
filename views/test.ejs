@@ -50,7 +50,7 @@
                     </li>
                 <% }else if (userRole === "teacher"){ %>
                     <li>
-                        <a href="/api/v1/admin/leaderboard">
+                        <a href="/api/v1/teacher/leaderboard">
                             <p class="underline-text-small">Leaderboard</p>
                         </a>
                     </li>
@@ -61,7 +61,7 @@
                         <li>
                             <% if (user){ %>
                                 <a id = "log-out" class = "underline-text-small">Log Out</a>
-                                <input type="hidden" class = "user-role" value = <%= userRole %>>
+                                <input type="hidden" class = "user-role" value = "<%= userRole %>">
                                
                             <% }else{ %>
                                 <a href="/api/v1/sign-in" class = "underline-text-small">Sign In</a>
@@ -94,16 +94,16 @@
                 Enter as many numbers as you can remember, good luck!
             </p>
 
-            <form action="/api/v1/student/result/done" method = "POST">
+            <div>
 
-                <textarea class="content" id="" cols="30" rows="10" placeholder="Enter your number here" required></textarea>
+                <textarea class="content" id="student-answer" cols="30" rows="10" placeholder="Enter your number here"></textarea>
 
                 <br>
 
-                <input type= "submit" class="submit" required>
+                <button class="submit">Submit</button>
 
 
-            </form>
+            </div>
 
 
         </section>
@@ -112,7 +112,7 @@
                 <h1 class = "instruction-title">Good Luck!</h1>
                 
                 
-                <button class="start-quiz" type="submit">Start</button>
+                <button class="start-quiz">Start</button>
             
 
 
@@ -142,8 +142,10 @@
         </footer>
     
     
-    <script type = "module" src = "/js/logOut.js"></script>
+    
     <script type = "module" src = "/js/test.js"></script>
+    <script type = "module" src = "/js/logOut.js"></script>
+    
     
     
     

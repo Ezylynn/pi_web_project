@@ -6,7 +6,7 @@ const {checkAuthenticated, checkNotAuthenticated, checkRole} = require("../middl
 
 testRouter.get("/:userRole/test", checkAuthenticated, checkRole, renderTest);
 
-testRouter.post("/:userRole/test",checkAuthenticated, checkRole, finishTest)
+
 
 
 module.exports = {testRouter}

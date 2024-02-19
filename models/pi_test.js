@@ -1,5 +1,6 @@
 const { pool } = require("../database/database");
-const { encrypt, decrypt, generateKeyAndIV } = require("../utils/encrypt");
+const { encrypt, decrypt} = require("../utils/encrypt");
+require("dotenv").config()
 
 class Test {
     #test_code;
@@ -9,19 +10,18 @@ class Test {
     constructor(data) {
         this.test_id = data.test_id || null;
         this.test_date = data.test_date;
-        this.#test_code = data.test_code || this.generateUniqueTestCode(); 
+        this.#test_code = data.test_code || null; 
         this.encrypted_test_code = data.encrypted_test_code || null;
         this.test_name = data.test_name;
         this.start_time = data.start_time;
         this.end_time = data.end_time;
-        const keyAndIV = generateKeyAndIV();
-        this.#key = keyAndIV.key;
-        this.#iv = keyAndIV.iv;
+        this.#key = process.env.ENCRYPTION_KEY;
+        this.#iv = process.env.ENCRYPTION_IV;
     }
 
-    generateUniqueTestCode() {
+    async generateUniqueTestCode() {
         let testCode = '';
-        const generatedTestCodes = this.#getAllTestCodes();
+        const generatedTestCodes = await this.#getAllTestCodes();
         const digits = '0123456789';
         
         do {
@@ -30,21 +30,21 @@ class Test {
                 const randomIndex = Math.floor(Math.random() * digits.length);
                 testCode += digits[randomIndex];
             }
-        } while (generatedTestCodes.has(testCode));
+        } while (generatedTestCodes.includes(testCode));
     
-        generatedTestCodes.add(testCode);
+       
         
-        return testCode;
+        this.#test_code = testCode;
     }
 
     async #getAllTestCodes() {
         const client = await pool.connect();
         try {
-            const decryptedTestCodes = new Set();
+            const decryptedTestCodes = [];
             const result = await client.query("SELECT encrypted_test_code FROM pi_tests;");
             result.rows.forEach(testCode => {
                 const decryptedCode = decrypt(testCode.encrypted_test_code, this.#key, this.#iv);
-                decryptedTestCodes.add(decryptedCode);
+                decryptedTestCodes.push(decryptedCode);
             });
             return decryptedTestCodes;
         } catch (err) {
@@ -113,4 +113,4 @@ module.exports = { Test };
 
 
 
-module.exports = {Test}
+

@@ -21,7 +21,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js",
-    "migrate": "node-pg-migrate"
+    "migrate": "node-pg-migrate",
+    "seed-user": "node database/seeds/loginUser.js",
+    "seed-admin": "node database/seeds/loginAdmin.js",
+    "seed-test": "node database/seeds/createTest.js"
   },
   "keywords": [],
   "author": "TheValueProducers <145182357+TheValueProducers@users.noreply.github.com>",

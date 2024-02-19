@@ -1,6 +1,6 @@
 import {getFullscreenElement, toggleFullscreen, enableFullScreenOnKeyPress } from "./lib/fullScreen.js"
 const timer = document.querySelector(".timer");
-const form = document.querySelector("form");
+
 const mainElement = document.querySelector("main");
 const instruction = document.querySelector(".instruction");
 const startButton = document.querySelector(".start-quiz");
@@ -8,25 +8,58 @@ const testContainer = document.querySelector(".container");
 const overlayMessage = document.querySelector(".overlay");
 const centeredMessage = document.querySelector(".centered-message");
 const strongElement = document.createElement("strong")
+const studentAnswer = document.querySelector("#student-answer");
+
+const submitTest = document.querySelector(".submit");
 strongElement.innerText = "F";
 
 let warningTimes = 0;
+let eventHandled = false;
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+};
+
+const debouncedRedirectToResult = debounce((result) => {
+    redirectToResult(result);
+}, 100); 
 
 function makeFullscreen(){
     return mainElement.requestFullscreen() ||  mainElement.webkitRequestFullscreen() || mainElement.mozRequestFullScreen() || mainElement.mozRequestFullScreen() || mainElement.msRequestFullscreen();
 }
 function redirectToResult(result){
-    fetch(`/api/v1/student/result/${result}`, { method: "POST" })
-                .then(response => {
-                    if (response.redirected) {
-                        window.location.href = response.url; 
-                      } else if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                      }
-                      
-                    })
+    fetch(`/api/v1/student/result/${result}`, { 
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: 
+            JSON.stringify({
                 
-                .catch(err => console.error("Error:", err));
+                studentAnswer: studentAnswer.value,
+                remainingTime: timer.innerText.toString()
+            })
+        
+    })
+    .then(response => {
+        if (response.redirected) {
+            console.log(response.url)
+            window.location.href = response.url; 
+        } else if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+                      
+    })
+                
+    .catch(err => console.error("Error:", err));
 }
 
 function displayWarningMessage(message){
@@ -55,7 +88,7 @@ function warnToFullscreenChange(event){
             `;
             
         } else {
-            document.removeEventListener("fullscreenchange", warnToFullscreenChange)
+            
             return redirectToResult("suspended") 
         }
         
@@ -78,10 +111,12 @@ function setTimer(hours, minutes, seconds) {
         
 
         if (distance <= 0) {
-            document.removeEventListener("fullscreenchange", warnToFullscreenChange)
+            
+            redirectToResult("done")
+            
             clearInterval(x);
            
-            form.submit();
+            
         }
         timer.innerText =
             (remainingHours.toString().length === 1 ? "0" + remainingHours : remainingHours) + ":" +
@@ -97,10 +132,17 @@ document.addEventListener('paste', (event) => {
    
 });
 document.addEventListener('visibilitychange', () => {
-    redirectToResult("suspended")
+    if (!eventHandled && document.visibilityState === 'hidden') {
+        eventHandled = true;
+        debouncedRedirectToResult("suspended");
+    }
 });
+
 window.addEventListener('blur', () => {
-    redirectToResult("suspended")
+    if (!eventHandled) {
+        eventHandled = true;
+        debouncedRedirectToResult("suspended");
+    }
 });
 startButton.addEventListener("click", () => {
     timer.style.display = "block";
@@ -115,6 +157,13 @@ startButton.addEventListener("click", () => {
 document.addEventListener("fullscreenchange", warnToFullscreenChange);
 
 
+submitTest.addEventListener("click", () => {
+        
+    redirectToResult("done")
+})
+
+
+    
 
 
 

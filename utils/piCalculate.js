@@ -1,51 +1,64 @@
 const fsPromises = require("fs/promises");
+const path = require("path")
 /*
     - Whitespaces are ignored in this function
     - Any non-alphanumeric characters will be considered unmatched
     - If the student's answer is longer than 10000, return 10000!
     - This file is still in completion
  */
-const rankingPiAnswers = async () => {
-    try {
-        const piBuffer = await fsPromises.readFile("./data/pi.txt");
-        const pi = piBuffer.toString().split(" ").join("");
-        const studentAnswersBuffer = await fsPromises.readFile("./data/studentAnswers.json");
-        const studentAnswers = JSON.parse(studentAnswersBuffer.toString());
-        const leaderboard = studentAnswers.map(studentAnswer => {
-            const answer = studentAnswer.answer.split(" ").join("");
-            if (answer.length > pi.length){
-                return {name: studentAnswer.name, piNumbersGuessed: 10000} //No way this is gonna happen
-            } 
-            for (let i = 0; i < answer.length; i++) {
-                if (answer[i] !== pi[i]) {
-                    if(i === 1){
-                        return {name: studentAnswer.name, piNumbersGuessed:1}
-                    }
-                    return {name: studentAnswer.name, piNumbersGuessed: i-1}; 
-                }
-            }
+    const rankingPiAnswers = async (studentAnswers) => {
+        try {
+            const piFilePath = path.join(__dirname, "pi.txt");
+            const piBuffer = await fsPromises.readFile(piFilePath);
+            // Remove whitespace and then non-alphanumeric characters except the decimal point
+            const pi = piBuffer.toString().replace(/\s+/g, '').replace(/[^0-9.]/g, '');
+    
+            const leaderboard = studentAnswers.map(studentAnswer => {
+                // Check if answer is a string, if not, use an empty string
+                const answer = typeof studentAnswer.answer === 'string'
+                    ? studentAnswer.answer.replace(/\s+/g, '').replace(/[^0-9.]/g, '')
+                    : '';
             
-            return {name: studentAnswer.name, piNumbersGuessed: answer.length};
-        }); 
-
-        leaderboard.sort((a,b) => {
-            if (a.piNumbersGuessed < b.piNumbersGuessed){
-                return 1
-            }else if (a.piNumbersGuessed > b.piNumbersGuessed){
-                return -1
-            }else{
-                return 0
-            }
-        })
-        for (let i = 0; i < leaderboard.length; i++){
-            leaderboard[i].position = (i+1).toString()
-            leaderboard[i].piNumbersGuessed = leaderboard[i].piNumbersGuessed.toString()
+                let piNumbersGuessed = 0;
+            
+                for (let i = 0; i < answer.length && i < pi.length; i++) {
+                    if (answer[i] === pi[i]) {
+                        // Increase the count for each matched digit, ignoring the decimal point
+                        if (answer[i] !== '.') {
+                            piNumbersGuessed++;
+                        }
+                    } else {
+                        // Stop counting at the first mismatch
+                        break;
+                    }
+                }
+            
+                // Limit the piNumbersGuessed to 10000 if it's longer
+                if (piNumbersGuessed > 10000) {
+                    piNumbersGuessed = 10000;
+                }
+            
+                return {
+                    ...studentAnswer,
+                    piNumbersGuessed: piNumbersGuessed
+                };
+            });
+            
+    
+            // Sort the leaderboard by piNumbersGuessed in descending order
+            leaderboard.sort((a, b) => b.piNumbersGuessed - a.piNumbersGuessed);
+    
+            // Set the position on the leaderboard
+            leaderboard.forEach((item, index) => {
+                item.position = (index + 1).toString();
+                item.piNumbersGuessed = item.piNumbersGuessed.toString();
+            });
+    
+            return leaderboard;
+    
+        } catch (err) {
+            console.error("Error:", err);
         }
-        return leaderboard
-  
-    } catch (err) {
-        console.error("Error:", err);
-    }
-};
+    };
 
-rankingPiAnswers();
+module.exports = {rankingPiAnswers}

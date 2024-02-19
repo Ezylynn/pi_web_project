@@ -2,8 +2,10 @@ const passport = require('passport');
 const LocalStrategy = require("passport-local").Strategy;
 const {User} = require("../models/user")
 
-passport.use(new LocalStrategy(
-    async function(username, password, done){
+passport.use(new LocalStrategy({
+    passReqToCallback: true
+},
+    async function(req, username, password, done){
         try{
             const user = await User.findByUsername(username);
             
@@ -13,6 +15,7 @@ passport.use(new LocalStrategy(
             const isMatch = await user.verifyPassword(password);
 
             if (!isMatch) return done (null, false, {message: `Incorrect password for ${username}`})
+            if (req.body.role !== user.role) return done (null, false, {message: `Invalid role`})
 
             if (user) return done(null, user);
         }catch(err){

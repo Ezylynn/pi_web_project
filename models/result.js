@@ -1,4 +1,5 @@
-const {pool} = require("../database/database")
+const {pool} = require("../database/database");
+
 const bcrypt = require('bcrypt');
 
 class TestResult{
@@ -6,8 +7,9 @@ class TestResult{
         this.result_id = data.result_id;
         this.student_id = data.student_id;
         this.test_id = data.test_id;
-        this.score = data.score;
+        this.answer = data.answer;
         this.attempt_time = data.attempt_time;
+        this.status = data.status;
           
     }
 
@@ -16,7 +18,7 @@ class TestResult{
             const client = await pool.connect();
         try{
             
-            await client.query("INSERT INTO test_results VALUES ($1, $2, $3, $4, $5);", [this.result_id, this.student_id, this.test_id, this.score, this.attempt_time]);
+            await client.query("INSERT INTO test_results (student_id, test_id, answer, status, attempt_time) VALUES ($1, $2, $3, $4, $5);", [this.student_id, this.test_id, this.answer, this.status, this.attempt_time]);
         }catch(err){
             
             throw err;
@@ -33,7 +35,7 @@ class TestResult{
         try{
             const userInfo = await client.query("SELECT * FROM test_results WHERE student_id = $1;", [studentId]);
             if (userInfo.rows.length > 0){
-                return new StudentInfo(userInfo.rows[0]);
+                return new TestResult(userInfo.rows[0]);
             }else{
                 return null
             }
@@ -48,9 +50,9 @@ class TestResult{
     static async findByResultId(resultId){
         const client = await pool.connect();
         try{
-            const userInfo = await client.query("SELECT * FROM test_results WHERE result_id = $1;", [id]);
+            const userInfo = await client.query("SELECT * FROM test_results WHERE result_id = $1;", [resultId]);
             if (userInfo.rows.length > 0){
-                return new StudentInfo(userInfo.rows[0]);
+                return new TestResult(userInfo.rows[0]);
             }else{
                 return null
             }
@@ -67,4 +69,4 @@ class TestResult{
 
 
 
-module.exports = {Teacher}
+module.exports = {TestResult}

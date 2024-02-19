@@ -1,6 +1,6 @@
 const logOut = document.querySelector("#log-out");
 const userRole = document.querySelector(".user-role").value;
-console.log(userRole)
+
 logOut.addEventListener("click", () => {
     fetch(`/api/v1/${userRole}/log-out`, {method: "DELETE"})
     .then(response => {

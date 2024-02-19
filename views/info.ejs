@@ -47,7 +47,7 @@
                     </li>
                 <% }else if (userRole === "teacher"){ %>
                     <li>
-                        <a href="/api/v1/admin/leaderboard">
+                        <a href="/api/v1/teacher/leaderboard">
                             <p class="underline-text-small">Leaderboard</p>
                         </a>
                     </li>
@@ -80,16 +80,23 @@
        
 
     </header>
-    <main>
+    <main class = "bg layer">
 
-        <section class="bg layer"></section>
-
+       
+    
         <section class="container"> 
             <p class="title_1">Student info</p>
-            <p class="name"><span class="highlight">Name</span>:[PLACEHOLDER]</p>
-            <p class="class"><span class="highlight">Class</span>:[PLACEHOLDER]</p>
-            <p class="email"><span class="highlight">Email</span>:[PLACEHOLDER] </p>
-            <p class="status"><span class="highlight">Status</span>:[PLACEHOLDER]</p>
+            <div class = "student-info">
+                <p class="student-id"><span class="highlight">StudentId</span>: <%= student[0].student_id%></p>
+                <p class="username"><span class="highlight">Username</span>: <%= student[0].username%></p>
+                <p class="full-name"><span class="highlight">Fullname</span>: <%= student[0].full_name%> </p>
+                <p class="grade"><span class="highlight">Grade</span>: <%= student[0].grade%></p>
+                <p class="email"><span class="highlight">Email</span>: <%= student[0].email%></p>
+                <p class="answer"><span class="highlight">Answer</span>: <%= student[0].answer%></p>
+                <p class="created-at"><span class="highlight">Created At</span>: <%= student[0].created_at%></p>
+                <p class="pi-number"><span class="highlight">Pi Numbers Guessed Correctly</span>: <%= student[0].piNumbersGuessed%></p>
+                <p class="status"><span class="highlight">Status</span>: <%= student[0].status%></p>
+            </div>
         </section>
 
         <!-- u can add more info if u want to -->

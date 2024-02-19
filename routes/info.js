@@ -4,7 +4,7 @@ const {checkAuthenticated, checkNotAuthenticated, checkRole} = require("../middl
 const infoRouter = express.Router();
 
 
-infoRouter.get("/:userRole/info",checkAuthenticated,checkRole, renderInfo);
+infoRouter.get("/:userRole/info/:userId",checkAuthenticated,checkRole, renderInfo);
 
 
 module.exports = {infoRouter}

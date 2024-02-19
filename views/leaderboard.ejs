@@ -47,7 +47,7 @@
                     </li>
                 <% }else if (userRole === "teacher"){ %>
                     <li>
-                        <a href="/api/v1/admin/leaderboard">
+                        <a href="/api/v1/teacher/leaderboard">
                             <p class="underline-text-small">Leaderboard</p>
                         </a>
                     </li>
@@ -91,110 +91,28 @@
                 <p class="title_1">Student leaderboard</p>
             </section>
 
-            <section>
+            <section class = "table-section">
                 <table>
 
-                    <tr>
-                        <th>id</th>
+                    <thead>
+                        <th>No.</th>
                         <th>Name</th>
                         <th>Class</th>
-                        <th>No. of Pi correct </th>
-                    </tr>
+                        <th>No. of Pi correct</th>
+                        
+                    </thead>
 
-                    <tr>
-                        <td>1</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-                    </tr>
-                
-                    <tr>
+                    <% for (let i = 0; i < studentRank.length; i++){ %>
 
-                        <td>2</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-
-
-                    </tr>
-
-
-                    <tr>
-
-                        <td>3</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-
-
-                    </tr>
-
-
-                    <tr>
-
-                        <td>5</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-
-
-                    </tr>
-
-
-                    <tr>
-
-                        <td>6</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-
-
-                    </tr>
-
-
-                    <tr>
-
-                        <td>7</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-
-
-                    </tr>
-
-                    <tr>
-
-                        <td>8</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-
-
-                    </tr>
-
-
-
-                    <tr>
-
-                        <td>9</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-
-
-                    </tr>
-
-
-
-                    <tr>
-
-                        <td>10</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-                        <td>[PLACEHOLDER]</td>
-
-
-                    </tr>
+                        <tr>
+                            <td><%=i+1%></td>
+                            <td><%=studentRank[i].full_name%></td>
+                            <td><%=studentRank[i].grade%></td>
+                            <td><%=studentRank[i].piNumbersGuessed%></td>
+                            <td><a href="/api/v1/teacher/info/<%= studentRank[i].student_id %>">More</a></td>
+                        </tr>
+                    
+                    <% } %>
 
                     
         

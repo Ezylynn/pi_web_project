@@ -44,7 +44,8 @@ exports.up = pgm => {
       result_id: { type: 'serial', primaryKey: true },
       student_id: { type: 'integer', notNull: true, references: 'users(user_id)' },
       test_id: { type: 'integer', notNull: true, references: 'pi_tests(test_id)' },
-      score: { type: 'integer' },
+      answer: { type: 'text' },
+      status: {type: 'varchar(10)'},
       attempt_time: { type: 'timestamp', default: pgm.func('current_timestamp') }
     });
   

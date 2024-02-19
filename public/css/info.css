@@ -17,12 +17,15 @@
   .bg{
     z-index: -1;
     aspect-ratio: 1439/730;
-    width: 100%;
+    width: 100vw;
     margin-top: 10vh;
     height: auto;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   
   }
   
@@ -34,23 +37,28 @@
 
 
 .container{
-    display: block;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     border: none;
     border-radius: 50px;
     backdrop-filter: blur(30px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    width: 25%;
+    width: 50vw;
     height: auto;
     padding: 4rem 1rem 4rem 1rem;
 
 
 
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    
+}
+
+.student-info{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
 }
 
 
@@ -62,7 +70,7 @@
 
 }
 
-.name, .class, .email, .status{
+.username, .class, .email, .status, .full-name, .username, .grade, .created-at, .pi-number, .student-id, .answer{
     color: white;
     font-size: 19px;
     margin-top: 2rem;
