@@ -4,7 +4,7 @@ const testRouter = express.Router();
 const {checkAuthenticated, checkNotAuthenticated, checkRole} = require("../middleware/checkAuthenticated")
 
 
-testRouter.get("/:userRole/test", checkAuthenticated, checkRole, renderTest);
+testRouter.get("/:userRole/test/:userId", checkAuthenticated, checkRole, renderTest);
 
 
 

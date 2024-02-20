@@ -9,6 +9,7 @@ const overlayMessage = document.querySelector(".overlay");
 const centeredMessage = document.querySelector(".centered-message");
 const strongElement = document.createElement("strong")
 const studentAnswer = document.querySelector("#student-answer");
+const userId = document.querySelector(".userId");
 
 const submitTest = document.querySelector(".submit");
 strongElement.innerText = "F";
@@ -36,7 +37,7 @@ function makeFullscreen(){
     return mainElement.requestFullscreen() ||  mainElement.webkitRequestFullscreen() || mainElement.mozRequestFullScreen() || mainElement.mozRequestFullScreen() || mainElement.msRequestFullscreen();
 }
 function redirectToResult(result){
-    fetch(`/api/v1/student/result/${result}`, { 
+    fetch(`/api/v1/student/result/${result}/${userId.value}`, { 
         method: "POST",
         headers: {
             "Content-Type": "application/json"

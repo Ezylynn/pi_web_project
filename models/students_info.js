@@ -1,5 +1,6 @@
 const {pool} = require("../database/database")
 const bcrypt = require('bcrypt');
+const {User} = require("../models/user")
 
 
 class Student{
@@ -10,6 +11,7 @@ class Student{
         this.full_name = data.full_name;
         this.email = data.email;
         this.grade = data.grade;
+        
         
         
     }
@@ -67,6 +69,45 @@ class Student{
         }
     }
 
+    static async updateByUsername(username, newUserData, newStudentData) {
+        const client = await pool.connect();
+        try {
+            await client.query('BEGIN');
+            
+            const userInfo = await User.findByUsername(username);
+            const studentInfo = await Student.findByUsername(username);
+    
+            if (!userInfo || !studentInfo) {
+                throw new Error('User or student not found');
+            }
+
+            if (newUserData && Object.keys(newUserData).length > 0) {
+                const setUserClause = Object.keys(newUserData).map((key, index) => `${key} = $${index + 1}`).join(', ');
+                const updateUserQuery = `UPDATE users SET ${setUserClause} WHERE username = $${Object.keys(newUserData).length + 1} RETURNING *;`;
+                const updateUserParams = [...Object.values(newUserData), username];
+                await client.query(updateUserQuery, updateUserParams);
+            }
+    
+           
+            if (newStudentData && Object.keys(newStudentData).length > 0) {
+                const setStudentClause = Object.keys(newStudentData).map((key, index) => `${key} = $${index + 1}`).join(', ');
+                const updateStudentQuery = `UPDATE students_info SET ${setStudentClause} WHERE student_id = $${Object.keys(newStudentData).length + 1} RETURNING *;`;
+                const updateStudentParams = [...Object.values(newStudentData), studentInfo.student_id];
+                await client.query(updateStudentQuery, updateStudentParams);
+            }
+    
+            await client.query('COMMIT');
+          
+        } catch(err) {
+            await client.query('ROLLBACK');
+            throw err;
+        } finally {
+            if (client) {
+                client.release();
+            }
+        }
+    }
+
     static async findByUsername(username){
         const client = await pool.connect();
         try{
@@ -84,6 +125,8 @@ class Student{
             }
         }
     }
+
+    
     static async findById(id){
         const client = await pool.connect();
         try{
@@ -103,7 +146,7 @@ class Student{
     }
 }
 
-
+Student.findByUsername("verysmartperson").then(data => console.log(data))
 
 
 module.exports = {Student}

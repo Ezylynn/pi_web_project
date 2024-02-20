@@ -45,6 +45,36 @@ class User{
             }
         }
     }
+    static async update(identifier, newData){ //identifier will look like this: {username: "jamesbond"}
+        const client = await pool.connect();
+        try {
+            const setClause = Object.keys(newData).map((key, index) => `${key} = $${index + 1}`).join(', ');
+    
+            const queryText = `
+                UPDATE students_info
+                SET ${setClause}
+                WHERE ${Object.keys(identifier)[0]} = $${Object.keys(newData).length + 1}
+                RETURNING *;
+            `;
+    
+            const queryParams = [...Object.values(newData), ...Object.values(identifier)];
+    
+            const userInfo = await client.query(queryText, queryParams);
+    
+            if (userInfo.rowCount > 0) {
+                return userInfo.rows;
+            } else {
+                return null;
+            }
+        } catch(err){
+            throw err
+        }finally{
+            if (client){
+                client.release();
+            }
+        }
+    }
+
     
 
     async verifyPassword(candidatePassword) {

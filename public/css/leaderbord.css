@@ -38,11 +38,17 @@
     background-color: aqua;
     
     padding-bottom: 3rem;
-    overflow: hidden;
     
+    
+  }
+
+  .table-section{
+    overflow: scroll;
   }
   
   .table_header {
+   
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -53,6 +59,7 @@
     padding-bottom: 2rem;
     font-size: 30px;
     font-weight: 700;
+    
   }
   
   .table_header p {
@@ -66,7 +73,7 @@
     width: 100%;
     border-radius: 2rem;
    
-    overflow: scroll;
+    
   }
   
   table thead th {

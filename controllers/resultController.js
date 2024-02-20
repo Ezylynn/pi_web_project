@@ -5,19 +5,20 @@ const {Student} = require("../models/students_info")
 
 const processResult = async (req,res) => {
     try{
-        const {status, userRole} = req.params;
+        const {status, userRole, userId} = req.params;
         const {remainingTime, studentAnswer} = req.body;
 
         const {username} = req.user;
         
         const attemptTime = subtractTimes(remainingTime, "00:35:00")
-        const allInfo = await Student.findByUsername("student");
+        const allInfo = await Student.findById(userId);
+        
         
         const test = await Test.find({test_name: "Pi Test"})
         
         const newResult = new TestResult({
             test_id: test.test_id,
-            student_id: allInfo[0].student_id,
+            student_id: allInfo.student_id,
             answer: studentAnswer.toString(),
             status: status,
             attempt_time: `${convertToYearMonthDay(test.test_date)} ${attemptTime}`
@@ -25,7 +26,7 @@ const processResult = async (req,res) => {
         })
         await newResult.save()
         
-        res.redirect(`/api/v1/${userRole}/result/${status}`)
+        res.redirect(`/api/v1/${userRole}/result/${status}/${userId}`)
     }catch(err){
         console.error("Error:", err)
     }

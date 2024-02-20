@@ -87,15 +87,44 @@
         <section class="container"> 
             <p class="title_1">Student info</p>
             <div class = "student-info">
-                <p class="student-id"><span class="highlight">StudentId</span>: <%= student[0].student_id%></p>
-                <p class="username"><span class="highlight">Username</span>: <%= student[0].username%></p>
-                <p class="full-name"><span class="highlight">Fullname</span>: <%= student[0].full_name%> </p>
-                <p class="grade"><span class="highlight">Grade</span>: <%= student[0].grade%></p>
-                <p class="email"><span class="highlight">Email</span>: <%= student[0].email%></p>
-                <p class="answer"><span class="highlight">Answer</span>: <%= student[0].answer%></p>
-                <p class="created-at"><span class="highlight">Created At</span>: <%= student[0].created_at%></p>
-                <p class="pi-number"><span class="highlight">Pi Numbers Guessed Correctly</span>: <%= student[0].piNumbersGuessed%></p>
-                <p class="status"><span class="highlight">Status</span>: <%= student[0].status%></p>
+                <div class = "student-info-child">
+                    <div class ="student-id essential-label">Student ID:</div>
+                    <div class="student-id essential" id = "student-id"><%= student[0].student_id%></div>
+                </div>
+                <div class = "student-info-child">
+                    <label for="username">Username:</label>
+                    <textarea class="username" id = "username" rows="1" cols="30"><%= student[0].username%></textarea>
+                </div>
+                <div class = "student-info-child">
+                    <label for="full-name">Full Name:</label>
+                    <textarea class="full-name" id = "full-name" rows="1" cols="30"><%= student[0].full_name%></textarea>
+                </div>
+                
+               
+                <div class="student-info-child">
+                    <label for="grade">Grade:</label>
+                    <textarea class="grade" id="grade" rows="1" cols="30"><%= student[0].grade %></textarea>
+                </div>
+                <div class="student-info-child">
+                    <label for="email">Email:</label>
+                    <textarea class="email" id="email" rows="1" cols="30"><%= student[0].email %></textarea>
+                </div>
+                <div class="student-info-child">
+                    <div class = "essential-label answer" >Answer:</div>
+                    <div class="answer essential" id="answer" ><%= student[0].answer %></div>
+                </div>
+                <div class="student-info-child">
+                    <label for="created-at">Created At:</label>
+                    <textarea class="created-at" id="created-at" rows="1" cols="30"><%= student[0].created_at %></textarea>
+                </div>
+                <div class="student-info-child">
+                    <label for="pi-number">Pi Numbers Guessed Correctly:</label>
+                    <textarea class="pi-number" id="pi-number" rows="1" cols="30"><%= student[0].piNumbersGuessed %></textarea>
+                </div>
+                <div class="student-info-child">
+                    <label for="status">Status:</label>
+                    <textarea class="status" id="status" rows="1" cols="30"><%= student[0].status %></textarea>
+                </div>
             </div>
         </section>
 
