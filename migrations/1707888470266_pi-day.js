@@ -46,7 +46,8 @@ exports.up = pgm => {
       test_id: { type: 'integer', notNull: true, references: 'pi_tests(test_id)' },
       answer: { type: 'text' },
       status: {type: 'varchar(10)'},
-      attempt_time: { type: 'timestamp', default: pgm.func('current_timestamp') }
+      attempt_time: { type: 'timestamp', default: pgm.func('current_timestamp') },
+      attempted_at: { type: 'timestamp', default: pgm.func('current_timestamp')}
     });
   
    

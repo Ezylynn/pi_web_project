@@ -111,7 +111,8 @@
                 </div>
                 <div class="student-info-child">
                     <div class = "essential-label answer" >Answer:</div>
-                    <div class="answer essential" id="answer" ><%= student[0].answer %></div>
+                    <div class="answer essential" id="answer"><% for (let i = 0; i < student[0].answer.length; i++) { %><% if (student[0].answer[i] === ".") { %><span style="color: white; display: inline; padding: 0; margin: 0; font-weight: bold;">.</span><% } else if (student[0].rightPositions.includes(i)) { %><span style="color: green; display: inline; padding: 0; margin: 0; font-weight: bold;"><%= student[0].answer[i] %></span><% } else { %><span style="color: red; display: inline; padding: 0; margin: 0; font-weight: bold;"><%= student[0].answer[i] %></span><% } %><% } %></div>
+
                 </div>
                 <div class="student-info-child">
                     <label for="created-at">Created At:</label>
@@ -121,6 +122,8 @@
                     <label for="pi-number">Pi Numbers Guessed Correctly:</label>
                     <textarea class="pi-number" id="pi-number" rows="1" cols="30"><%= student[0].piNumbersGuessed %></textarea>
                 </div>
+               
+                
                 <div class="student-info-child">
                     <label for="status">Status:</label>
                     <textarea class="status" id="status" rows="1" cols="30"><%= student[0].status %></textarea>

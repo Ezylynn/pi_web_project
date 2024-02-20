@@ -54,7 +54,7 @@ class Student{
     static async fetchEssentials(){
         const client = await pool.connect();
         try{
-            const userInfo = await client.query("SELECT students_info.student_id, users.user_id, users.username, students_info.full_name, students_info.grade, students_info.email, test_results.answer, test_results.status, users.created_at FROM students_info LEFT JOIN users ON users.user_id = students_info.student_id LEFT JOIN test_results ON students_info.student_id = test_results.student_id;");
+            const userInfo = await client.query("SELECT students_info.student_id, users.user_id, users.username, students_info.full_name, students_info.grade, students_info.email, test_results.answer, test_results.status, users.created_at, test_results.attempted_at FROM students_info LEFT JOIN users ON users.user_id = students_info.student_id LEFT JOIN test_results ON students_info.student_id = test_results.student_id;");
             if (userInfo.rows.length > 0){
                 return userInfo.rows;
             }else{

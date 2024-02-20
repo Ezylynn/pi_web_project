@@ -9,6 +9,7 @@ class TestResult{
         this.test_id = data.test_id;
         this.answer = data.answer;
         this.attempt_time = data.attempt_time;
+        this.attempted_at = data.attempted_at;
         this.status = data.status;
           
     }

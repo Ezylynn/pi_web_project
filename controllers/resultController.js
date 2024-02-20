@@ -21,7 +21,8 @@ const processResult = async (req,res) => {
             student_id: allInfo.student_id,
             answer: studentAnswer.toString(),
             status: status,
-            attempt_time: `${convertToYearMonthDay(test.test_date)} ${attemptTime}`
+            attempt_time: `${convertToYearMonthDay(Date.now())} ${attemptTime}`,
+            attempted_at: new Date().toISOString()
 
         })
         await newResult.save()

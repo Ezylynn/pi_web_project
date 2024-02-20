@@ -1,13 +1,17 @@
 const {Student} = require("../models/students_info")
 const {rankingPiAnswers} = require("../utils/piCalculate")
+const {convertISO} = require("../utils/getAttemptTime")
 const renderLeaderboard = async (req,res) => {
     const {userRole} = req.params;
     let userInfo = await Student.fetchEssentials();
-    // console.log(userInfo)
+    
     
     let userInfoUpdated = await rankingPiAnswers(userInfo);
+    userInfoUpdated.map(userInfo => {
+        userInfo.attempted_at = convertISO(userInfo.attempted_at)
+    })
     
-    console.log(userInfoUpdated)
+    
     
 
     res.render("leaderboard", {userRole, user: req.user, studentRank: userInfoUpdated})
