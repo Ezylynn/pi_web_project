@@ -1,7 +1,7 @@
 const renderHome = (req,res) => {
     
-    const {userRole} = req.params;
-    res.render("home", {userRole, user: req.user})
+    const {role} = req.user;
+    res.render("home", {userRole: role, user: req.user})
 }
 
 module.exports = {renderHome}

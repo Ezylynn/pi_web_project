@@ -4,7 +4,7 @@ const instructionRouter = express.Router();
 const {checkAuthenticated, checkNotAuthenticated, checkRole} = require("../middleware/checkAuthenticated")
 
 
-instructionRouter.get("/:userRole/instruction",checkAuthenticated, checkRole, renderInstruction);
+instructionRouter.get("/student/instruction",checkAuthenticated, checkRole("student"), renderInstruction);
 
 
 module.exports = {instructionRouter}

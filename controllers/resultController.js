@@ -5,8 +5,9 @@ const {Student} = require("../models/students_info")
 
 const processResult = async (req,res) => {
     try{
-        const {status, userRole, userId} = req.params;
+        const {status, userId} = req.params;
         const {remainingTime, studentAnswer} = req.body;
+        
 
         const {username} = req.user;
         
@@ -27,7 +28,7 @@ const processResult = async (req,res) => {
         })
         await newResult.save()
         
-        res.redirect(`/api/v1/${userRole}/result/${status}/${userId}`)
+        res.redirect(`/api/v1/student/result/${status}/${userId}`)
     }catch(err){
         console.error("Error:", err)
     }

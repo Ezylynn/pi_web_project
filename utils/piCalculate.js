@@ -6,12 +6,12 @@ const rankingPiAnswers = async (studentAnswers) => {
     try {
         const piFilePath = path.join(__dirname, "pi.txt");
         const piBuffer = await fsPromises.readFile(piFilePath);
-        const pi = piBuffer.toString(); 
+        
+        //const pi = piBuffer.toString().replace(/\D/g, ''); 
+        const pi = piBuffer.toString();
 
         const leaderboard = studentAnswers.map(studentAnswer => {
-            const answer = typeof studentAnswer.answer === 'string'
-                ? studentAnswer.answer
-                : '';
+            const answer = typeof studentAnswer.answer === 'string'? studentAnswer.answer: '';
 
             let rightPositions = [];
             let wrongPositions = [];
@@ -19,6 +19,7 @@ const rankingPiAnswers = async (studentAnswers) => {
             let firstWrongEncountered = false;
 
             for (let i = 0; i < Math.min(answer.length, pi.length); i++) {
+                if (answer[i] === "." && pi[i] === ".") continue
                 if (answer[i] === pi[i]) {
                     rightPositions.push(i);
                     if (!firstWrongEncountered) {
@@ -52,12 +53,6 @@ const rankingPiAnswers = async (studentAnswers) => {
 };
 
 
-// rankingPiAnswers([{
-//     name: "hitler",
-//     answer: '3.124348349826487326'
-// }, {
-//     name: "einstein",
-//     answer: '3.141567842362746237846'
-// }]).then(leaderboard => console.log(leaderboard))
+
 
 module.exports = { rankingPiAnswers };

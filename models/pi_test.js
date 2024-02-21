@@ -70,6 +70,24 @@ class Test {
         }
     }
 
+    static async update(test_name, data) {
+        const client = await pool.connect();
+        try {
+            
+            const setUserClause = Object.keys(data).map((key, index) => `${key} = $${index + 1}`).join(', ');
+            const updateUserQuery = `UPDATE users SET ${setUserClause} WHERE test_name = $${Object.keys(data).length + 1} RETURNING *;`;
+            await client.query(updateUserQuery, [...Object.values(data), test_name])
+            
+            
+        } catch (err) {
+            throw err;
+        } finally {
+            if (client) {
+                client.release();
+            }
+        }
+    }
+
     async delete(test) {
         const client = await pool.connect();
         try {

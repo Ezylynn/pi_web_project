@@ -2,7 +2,8 @@ const {Student} = require("../models/students_info")
 const {rankingPiAnswers} = require("../utils/piCalculate")
 const {convertISO} = require("../utils/getAttemptTime")
 const renderLeaderboard = async (req,res) => {
-    const {userRole} = req.params;
+    const {role} = req.user;
+    
     let userInfo = await Student.fetchEssentials();
     
     
@@ -14,7 +15,7 @@ const renderLeaderboard = async (req,res) => {
     
     
 
-    res.render("leaderboard", {userRole, user: req.user, studentRank: userInfoUpdated})
+    res.render("leaderboard", {userRole: role, user: req.user, studentRank: userInfoUpdated})
 }
 
 module.exports = {renderLeaderboard}

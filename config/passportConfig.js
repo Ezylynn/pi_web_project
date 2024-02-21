@@ -16,7 +16,7 @@ passport.use(new LocalStrategy({
 
             if (!isMatch) return done (null, false, {message: `Incorrect password for ${username}`})
             if (req.body.role !== user.role) return done (null, false, {message: `Invalid role`})
-
+            
             if (user) return done(null, user);
         }catch(err){
             done(err)

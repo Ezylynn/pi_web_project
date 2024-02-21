@@ -3,8 +3,8 @@ const {redirectToCheat, renderResult, processResult} = require("../controllers/r
 const resultRouter = express.Router();
 const {checkAuthenticated, checkNotAuthenticated, checkRole} = require("../middleware/checkAuthenticated")
 
-resultRouter.get("/:userRole/result/:status/:userId", checkAuthenticated, checkRole, renderResult)
-resultRouter.post("/:userRole/result/:status/:userId", checkAuthenticated, checkRole, processResult);
+resultRouter.get("/student/result/:status/:userId", checkAuthenticated, checkRole("student"), renderResult)
+resultRouter.post("/student/result/:status/:userId", checkAuthenticated, checkRole("student"), processResult);
 
 
 module.exports = {resultRouter}

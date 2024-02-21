@@ -20,8 +20,8 @@ const checkNotAuthenticated = (req,res,next) => {
 
 
 
-const checkRole = (req,res,next) => {
-    if (req.user.role === req.params.userRole){
+const checkRole = (role) => (req,res,next) => {
+    if (req.user.role === role){
         next()
     }else{
         res.status(403).redirect("/api/v1/sign-in")

@@ -51,8 +51,13 @@
                     </li>
                 <% }else if (userRole === "teacher"){ %>
                     <li>
-                        <a href="/api/v1/admin/leaderboard">
+                        <a href="/api/v1/teacher/leaderboard">
                             <p class="underline-text-small">Leaderboard</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/api/v1/teacher/setting/test">
+                            <p class="underline-text-small">Setting</p>
                         </a>
                     </li>
                 <% } %>
@@ -60,18 +65,15 @@
                     <a href="/api/v1/sign-in" class = "account-link" id = "account-link"><span class="material-symbols-outlined account-logo underline-text-small" id = "account-logo">account_circle</span></a>
                     <ul class = "account-menu" id = "account-menu">
                         <li>
-                            <li>
-                                <% if (user){ %>
-                                    <a id = "log-out" class = "underline-text-small">Log Out</a>
-                                    <input type="hidden" class = "user-role" value = <%= userRole %>>
-                                   
-                                <% }else{ %>
-                                    <a href="/api/v1/sign-in" class = "underline-text-small">Sign In</a>
-                                    
-                                <% } %>
-    
-    
-                            </li>
+                            <% if (user){ %>
+                                <a id = "log-out" class = "underline-text-small">Log Out</a>
+                                <input type="hidden" class = "user-role" value = <%= userRole %>>
+                               
+                            <% }else{ %>
+                                <a href="/api/v1/sign-in" class = "underline-text-small">Sign In</a>
+                                
+                            <% } %>
+
 
                         </li>
                         <li><a href="/api/v1/register" class = "underline-text-small">Register</a></li>
@@ -81,9 +83,6 @@
             </ul>
 
         </nav>
-
-       
-
     </header>
 
     <main  class="bg layer">

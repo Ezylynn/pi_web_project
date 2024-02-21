@@ -51,6 +51,11 @@
                             <p class="underline-text-small">Leaderboard</p>
                         </a>
                     </li>
+                    <li>
+                        <a href="/api/v1/teacher/setting/test">
+                            <p class="underline-text-small">Setting</p>
+                        </a>
+                    </li>
                 <% } %>
                 <li class = "account" id = "account">
                     <a href="/api/v1/sign-in" class = "account-link" id = "account-link"><span class="material-symbols-outlined account-logo underline-text-small" id = "account-logo">account_circle</span></a>
@@ -119,8 +124,12 @@
                     <textarea class="created-at" id="created-at" rows="1" cols="30"><%= student[0].created_at %></textarea>
                 </div>
                 <div class="student-info-child">
-                    <label for="pi-number">Pi Numbers Guessed Correctly:</label>
-                    <textarea class="pi-number" id="pi-number" rows="1" cols="30"><%= student[0].piNumbersGuessed %></textarea>
+                    <label for="right-answers">Pi Numbers Guessed Correctly (In Total):</label>
+                    <textarea class="right-answers" id="pi-number" rows="1" cols="30"><%= student[0].rightPositions.length %></textarea>
+                </div>
+                <div class="student-info-child">
+                    <label for="wrong-answers">Pi Numbers Guessed Wrong (In Total):</label>
+                    <textarea class="wrong-answers" id="wrong-answers" rows="1" cols="30"><%= student[0].wrongPositions.length %></textarea>
                 </div>
                
                 
@@ -131,7 +140,7 @@
             </div>
         </section>
 
-        <!-- u can add more info if u want to -->
+        
 
     </main>
 

@@ -3,7 +3,8 @@ const {rankingPiAnswers} = require("../utils/piCalculate")
 const {convertISO} = require("../utils/getAttemptTime")
 
 const renderInfo = async (req,res) => {
-    const {userRole, userId} = req.params;
+    const {userId} = req.params;
+    const {role} = req.user;
     
     
     let usersInfo = await Student.fetchEssentials();
@@ -16,7 +17,7 @@ const renderInfo = async (req,res) => {
     
     
     
-    res.render("info", {userRole, user: req.user, student: userInfo})
+    res.render("info", {userRole: role, user: req.user, student: userInfo})
 }
 
 module.exports = {renderInfo}
