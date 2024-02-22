@@ -1,0 +1,161 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+.pi{
+    font-size: 30px;
+    font-family: 'Times New Roman';
+  }
+  
+.bg{
+    
+    aspect-ratio: 1439/730;
+    width: 100%;
+    margin-top: 10vh;
+    height: auto;
+    
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  
+  }
+  
+  .layer{
+    background-image: url('/images/low-poly-grid-haikei.svg');
+  }
+
+
+  .container {
+    border-radius: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    height: 85vh;
+    background-color: rgb(55, 40, 93);
+    padding-bottom: 3rem;
+    border: none;
+    margin-top: -2.5vh;
+    
+  }
+
+
+
+
+ .table-section{
+  border: none;
+  border-radius: 1.5rem;
+  margin-top: 2.5rem;
+  width: 95%;
+  height: 85%;
+  overflow-y: scroll;
+  scrollbar-width: thin; /* Set the width of the scrollbar */
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* Set the color of the scroll bar */
+} 
+
+/* For WebKit based browsers (Chrome, Safari) */
+.table-section::-webkit-scrollbar {
+  width: 10px; /* Set the width of the scrollbar */
+}
+
+.table-section::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* Set the color of the scrollbar thumb */
+}
+
+.table-section::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1); /* Set the color of the scrollbar track */
+}
+
+.table_header {
+  border: none;
+  border-radius: 2rem 2rem 0 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  background-color: rgb(112, 66, 205);
+  width: 100%;
+  padding: 2rem 1.5rem 2rem 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  z-index: 1;
+  
+}
+
+
+.table_header p {
+  margin-left: 2rem;
+  color: white;
+}
+
+
+
+table {
+  border: none;
+  background-color: rgb(200, 183, 244);
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0; /* Ensure there is no spacing between cells */
+}
+
+
+table thead th {
+  font-size: 20px;
+  padding: 1.5rem 1.5rem 1.5em 1.5rem;
+  position: sticky;
+  top: 0; /* Ensures the table header sticks to the top of the table */
+  background-color: rgb(99, 59, 160); /* Background color for the table header */
+  color: white; /* Text color for the table header */
+  z-index: 2; 
+  
+}
+
+
+
+table tbody td {
+  padding: 1.5rem 1.7rem 1.5rem 1.5rem;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 500;
+
+  
+}
+
+tbody tr:nth-child(even){
+  background-color:rgb(180, 159, 233) ;
+}
+
+tbody tr:hover{
+background-color:rgb(153, 130, 209);
+
+}
+
+
+
+.footer{
+    position: absolute;
+    width: 100vw;
+    height: 20vh;
+    background-color:  rgb(96, 100, 238);
+}
+
+.footer p{
+    font-weight: bolder;
+    color: white;
+    margin-top: 8vh;
+    font-size: 20px;
+    text-align: center;
+
+}

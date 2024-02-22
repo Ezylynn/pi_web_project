@@ -140,6 +140,24 @@ button[type="submit"]:hover, button[type="reset"]:hover{
 }
 
 
+.not_user{
+  color: rgb(104, 104, 104);
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: 550;
+
+}
+
+.not_user a{
+  color: rgb(104, 104, 104);
+  text-decoration: none;
+}
+
+.not_user a:hover{
+  text-decoration: underline;
+}
+
+
 
 
 .bg{
@@ -160,6 +178,8 @@ button[type="submit"]:hover, button[type="reset"]:hover{
 .layer{
   background-image: url('/images/blob-scene1.svg');
 }
+
+
 
 
 .footer{
