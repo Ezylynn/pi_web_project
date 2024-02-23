@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/info.css">
+    
     <link rel="stylesheet" href="/css/mainAdmin.css">
+    <link rel="stylesheet" href="/css/info.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Student Info</title>
-
 </head>
 <body>
     <header class="header">
-
         <nav class="nav_bar">
             <ul class="menu">
                 <li class="home">
-                
                     <a href="/api/v1/<%= userRole %>/home">
                         <p class="underline-text-small">Home</p>
                     </a>
@@ -32,11 +30,11 @@
                                 <p class="underline-text-small">What is <span class="pi">&pi;</span></p>
                             </a>
                         </li>
+                        <li>
                             <a class="bottom_li" href="https://www.piday.org/">
                                 <p class="underline-text-small">More About Pi Day</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
                 <% if (userRole === "student"){ %>
@@ -57,109 +55,113 @@
                         </a>
                     </li>
                 <% } %>
-                <li class = "account" id = "account">
-                    <a href="/api/v1/sign-in" class = "account-link" id = "account-link"><span class="material-symbols-outlined account-logo underline-text-small" id = "account-logo">account_circle</span></a>
-                    <ul class = "account-menu" id = "account-menu">
+                <li class="account" id="account">
+                    <a href="/api/v1/sign-in" class="account-link" id="account-link">
+                        <span class="material-symbols-outlined account-logo underline-text-small" id="account-logo">account_circle</span>
+                    </a>
+                    <ul class="account-menu" id="account-menu">
                         <li>
                             <% if (user){ %>
-                                <a id = "log-out" class = "underline-text-small">Log Out</a>
-                                <input type="hidden" class = "user-role" value = <%= userRole %>>
-                               
+                                <a id="log-out" class="underline-text-small">Log Out</a>
+                                <input type="hidden" class="user-role" value="<%= userRole %>">
                             <% }else{ %>
-                                <a href="/api/v1/sign-in" class = "underline-text-small">Sign In</a>
-                                
+                                <a href="/api/v1/sign-in" class="underline-text-small">Sign In</a>
                             <% } %>
-
-
                         </li>
-                        <li><a href="/api/v1/register" class = "underline-text-small">Register</a></li>
+                        <li>
+                            <a href="/api/v1/register" class="underline-text-small">Register</a>
+                        </li>
                     </ul>
                 </li>
-
             </ul>
-
         </nav>
-
-       
-
-       
-
     </header>
-    <main class = "bg layer">
-
-       
-    
+    <main class="bg layer">
         <section class="container"> 
             <p class="title_1">Student info</p>
-            <div class = "student-info">
-                <div class = "student-info-child">
-                    <div class ="student-id essential-label">Student ID:</div>
-                    <div class="student-id essential" id = "student-id"><%= student[0].student_id%></div>
+            <div class="student-info">
+                <div class="student-info-child">
+                    <div class="student-id essential-label">Student ID:</div>
+                    <div class="student-id essential each-info" id="student-id"><%= student[0].student_id %></div>
                 </div>
-                <div class = "student-info-child">
+                <div class="student-info-child">
                     <label for="username">Username:</label>
-                    <textarea class="username" id = "username" rows="1" cols="30"><%= student[0].username%></textarea>
+                    <textarea class="username each-info" id="username" rows="1" cols="30"><%= student[0].username %></textarea>
                 </div>
-                <div class = "student-info-child">
+                <div class="student-info-child">
                     <label for="full-name">Full Name:</label>
-                    <textarea class="full-name" id = "full-name" rows="1" cols="30"><%= student[0].full_name%></textarea>
+                    <textarea class="full-name each-info" id="full-name" rows="1" cols="30"><%= student[0].full_name %></textarea>
                 </div>
-                
-               
                 <div class="student-info-child">
                     <label for="grade">Grade:</label>
-                    <textarea class="grade" id="grade" rows="1" cols="30"><%= student[0].grade %></textarea>
+                    <textarea class="grade each-info" id="grade" rows="1" cols="30"><%= student[0].grade %></textarea>
                 </div>
                 <div class="student-info-child">
                     <label for="email">Email:</label>
-                    <textarea class="email" id="email" rows="1" cols="30"><%= student[0].email %></textarea>
+                    <textarea class="email each-info" id="email" rows="1" cols="30"><%= student[0].email %></textarea>
                 </div>
                 <div class="student-info-child">
-                    <div class = "essential-label answer" >Answer:</div>
-                    <div class="answer essential" id="answer"><% for (let i = 0; i < student[0].answer.length; i++) { %><% if (student[0].answer[i] === ".") { %><span style="color: white; display: inline; padding: 0; margin: 0; font-weight: bold;">.</span><% } else if (student[0].rightPositions.includes(i)) { %><span style="color: green; display: inline; padding: 0; margin: 0; font-weight: bold;"><%= student[0].answer[i] %></span><% } else { %><span style="color: red; display: inline; padding: 0; margin: 0; font-weight: bold;"><%= student[0].answer[i] %></span><% } %><% } %></div>
-
+                    <div class="essential-label answer">Answer:</div>
+                    <div class="answer essential each-info">
+                        <!-- Initially load only a portion of the answer -->
+                        <% if (student[0].answer === "None"){ %>
+                            <div class="answer essential each-info none-answer" id="answer">None</div>
+                        <% }else{ %>
+                            <% 
+                                const chunkSize = 90; // Adjust as needed
+                                const answerLength = student[0].answer.length;
+                                const chunks = Math.ceil(answerLength / chunkSize);
+                                for (let chunkIndex = 0; chunkIndex < chunks; chunkIndex++) {
+                                    const start = chunkIndex * chunkSize;
+                                    const end = Math.min(start + chunkSize, answerLength);
+                            %>
+                            <div class="answer-chunk" >
+                                <% for (let i = start; i < end; i++) { %>
+                                    <% if (student[0].answer[i] === ".") { %>
+                                        <span style="color: white; font-weight: bold;">.</span>
+                                    <% } else if (student[0].rightPositions.includes(i)) { %>
+                                        <span style="color: green; font-weight: bold;"><%= student[0].answer[i] %></span>
+                                    <% } else { %>
+                                        <span style="color: red; font-weight: bold;"><%= student[0].answer[i] %></span>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <% } %>
+                        <% }%>
+                    </div>
                 </div>
                 <div class="student-info-child">
                     <label for="created-at">Created At:</label>
-                    <textarea class="created-at" id="created-at" rows="1" cols="30"><%= student[0].created_at %></textarea>
+                    <textarea class="created-at each-info" id="created-at" rows="1" cols="50"><%= student[0].created_at %></textarea>
                 </div>
                 <div class="student-info-child">
                     <label for="right-answers">Pi Numbers Guessed Correctly (In Total):</label>
-                    <textarea class="right-answers" id="pi-number" rows="1" cols="30"><%= student[0].rightPositions.length %></textarea>
+                    <textarea class="right-answers each-info" id="pi-number" rows="1" cols="30"><%= student[0].rightPositions === 'None' ? 0 : student[0].rightPositions.length %></textarea>
                 </div>
                 <div class="student-info-child">
                     <label for="wrong-answers">Pi Numbers Guessed Wrong (In Total):</label>
-                    <textarea class="wrong-answers" id="wrong-answers" rows="1" cols="30"><%= student[0].wrongPositions.length %></textarea>
+                    <textarea class="wrong-answers each-info" id="wrong-answers" rows="1" cols="30"><%= student[0].wrongPositions === 'None' ? 0 : student[0].wrongPositions.length %></textarea>
                 </div>
-               
-                
+                <div class="student-info-child">
+                    <label for="wrong-answers">Pi Numbers Guessed Before Wrong Answers (score):</label>
+                    <textarea class="score each-info" id="score" rows="1" cols="30"><%= student[0].score %></textarea>
+                </div>
+                <div class="student-info-child">
+                    <label for="wrong-answers">Percentage Correct:</label>
+                    <textarea class="percentage each-info" id="percentage" rows="1" cols="30"><%= student[0].percentageCorrect === 'None' ? "None" : student[0].percentageCorrect + "%" %></textarea>
+                </div>
                 <div class="student-info-child">
                     <label for="status">Status:</label>
-                    <textarea class="status" id="status" rows="1" cols="30"><%= student[0].status %></textarea>
+                    <textarea class="status each-info" id="status" rows="1" cols="30"><%= student[0].status %></textarea>
                 </div>
             </div>
         </section>
-
-        
-
     </main>
-
-
-
-        
-
-
-
-        <footer class="footer">
-
-            <p>Made by BVIS students</p>
-
-        </footer>
-    
-
-    <script type = "module" src = "/js/info.js"></script>
-    <script type = "module" src = "/js/logOut.js"></script>
-    
+    <footer class="footer">
+        <p>Made by BVIS students</p>
+    </footer>
+    <script type="module" src="/js/logOut.js"></script>
+    <script type="module" src="/js/info.js"></script>
+    <!-- Additional scripts can be added here -->
 </body>
-
 </html>

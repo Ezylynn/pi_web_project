@@ -5,6 +5,7 @@ const renderLeaderboard = async (req,res) => {
     const {role} = req.user;
     
     let userInfo = await Student.fetchEssentials();
+    userInfo = userInfo.filter(user => user.role === "student")
     
     
     let userInfoUpdated = await rankingPiAnswers(userInfo);

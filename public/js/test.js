@@ -17,6 +17,26 @@ strongElement.innerText = "F";
 let warningTimes = 0;
 let eventHandled = false;
 
+function fetchTime() {
+    fetch(`/api/v1/student/test/pi-test/${userId.value}`, {
+        method: "POST"
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Response was not okay");
+        }
+        return response.json();
+    }).then(response => {
+        
+        const { time } = response;
+        let timeArray = time.split(":")
+        
+
+        setTimer(parseInt(timeArray[0]), parseInt(timeArray[1]), parseInt(timeArray[2])); 
+    }).catch(err => {
+        console.error(err); 
+    });
+}
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -37,7 +57,7 @@ function makeFullscreen(){
     return mainElement.requestFullscreen() ||  mainElement.webkitRequestFullscreen() || mainElement.mozRequestFullScreen() || mainElement.mozRequestFullScreen() || mainElement.msRequestFullscreen();
 }
 function redirectToResult(result){
-    fetch(`/api/v1/student/result/${result}/${userId.value}`, { 
+    fetch(`/api/v1/student/pi-test/result/${result}/${userId.value}`, { 
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -150,7 +170,8 @@ startButton.addEventListener("click", () => {
     testContainer.style.display = "block";
     instruction.style.display = "none";
     mainElement.style.display = "block";
-    setTimer(0,0,15);
+    fetchTime()
+    
     makeFullscreen();
 } 
 )
@@ -162,6 +183,8 @@ submitTest.addEventListener("click", () => {
         
     redirectToResult("done")
 })
+
+
 
 
     

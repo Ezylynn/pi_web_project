@@ -74,10 +74,21 @@ function convertISO(isoDateString){
   return cleanDateTime;
 }
 
+function convertToTimeFormat(isoString) {
+  const date = new Date(isoString);
+
+  // Extract hours, minutes, and seconds
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const seconds = date.getSeconds().toString().padStart(2, '0');
+
+  // Return the formatted time string
+  return `${hours}:${minutes}:${seconds}`;
+}
 
 
   
 
 
   
-module.exports = {subtractTimes, convertToYearMonthDay, convertISO}
+module.exports = {subtractTimes, convertToYearMonthDay, convertISO, convertToTimeFormat}

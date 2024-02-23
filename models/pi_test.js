@@ -37,6 +37,11 @@ class Test {
         this.#test_code = testCode;
     }
 
+    getTestCode(){
+        this.#test_code = decrypt(this.encrypted_test_code, this.#key, this.#iv)
+        return this.#test_code
+    }
+
     async #getAllTestCodes() {
         const client = await pool.connect();
         try {
@@ -75,7 +80,7 @@ class Test {
         try {
             
             const setUserClause = Object.keys(data).map((key, index) => `${key} = $${index + 1}`).join(', ');
-            const updateUserQuery = `UPDATE users SET ${setUserClause} WHERE test_name = $${Object.keys(data).length + 1} RETURNING *;`;
+            const updateUserQuery = `UPDATE pi_tests SET ${setUserClause} WHERE test_name = $${Object.keys(data).length + 1} RETURNING *;`;
             await client.query(updateUserQuery, [...Object.values(data), test_name])
             
             
@@ -121,6 +126,11 @@ class Test {
         }
     }
 }
+
+
+
+
+
 
 module.exports = { Test };
 

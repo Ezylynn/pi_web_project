@@ -97,14 +97,14 @@ main{
   border-bottom-right-radius: 50px; /* Rounded bottom-right corner */
 }
 
-.user_cf{
+/* .user_cf{
     z-index: 5;
     font-size: 16px;
     font-weight: 600;
     color: white;
     margin-left: 80vw;
     margin-top: -6vh;
-}
+} */
 
 .underline-text-small{
     position: relative;

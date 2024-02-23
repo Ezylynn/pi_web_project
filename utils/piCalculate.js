@@ -7,7 +7,7 @@ const rankingPiAnswers = async (studentAnswers) => {
         const piFilePath = path.join(__dirname, "pi.txt");
         const piBuffer = await fsPromises.readFile(piFilePath);
         
-        //const pi = piBuffer.toString().replace(/\D/g, ''); 
+      
         const pi = piBuffer.toString();
 
         const leaderboard = studentAnswers.map(studentAnswer => {
@@ -40,7 +40,8 @@ const rankingPiAnswers = async (studentAnswers) => {
                 ...studentAnswer,
                 rightPositions: rightPositions,
                 wrongPositions: wrongPositions,
-                score: score 
+                score: score,
+                percentageCorrect: ((rightPositions.length/(rightPositions.length+wrongPositions.length))*100).toFixed(2) 
             };
         });
 

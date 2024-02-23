@@ -12,11 +12,14 @@
 
 
 
-
+main.bg{
+    overflow: scroll;
+    padding: 20vh 0;
+}
 
   .bg{
-    z-index: -1;
-    aspect-ratio: 1439/730;
+   
+    
     width: 100vw;
     margin-top: 10vh;
     height: auto;
@@ -26,6 +29,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+   
+    
   
   }
   
@@ -48,6 +53,8 @@
     width: 70vw;
     height: auto;
     padding: 4rem 1rem 4rem 1rem;
+    
+    
 
 
 
@@ -59,7 +66,12 @@
     align-items: flex-start;
     justify-content: space-between;
     flex-direction: column;
-    height: 90%;
+    height: 80%;
+}
+
+#answer{
+    overflow: hidden;
+    max-width: 70%;
 }
 
 div.student-info-child{
@@ -100,11 +112,28 @@ div.student-info-child{
 
 }
 
-.username, .class, .email, .status, .full-name, .username, .grade, .created-at, .pi-number, .student-id, .answer{
+.student-info-child textarea .each-info{
     color: white;
     font-size: 19px;
     margin-top: 2rem;
 }
+
+.none-answer{
+    width: 60%;
+}
+
+#answer{
+    width: 80%;
+}
+
+.answer-chunk{
+    width: 100%;
+    padding: 0;
+}
+
+
+
+
 
 
 

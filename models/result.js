@@ -1,3 +1,4 @@
+const { use } = require("passport");
 const {pool} = require("../database/database");
 
 const bcrypt = require('bcrypt');
@@ -14,7 +15,28 @@ class TestResult{
           
     }
 
-
+    
+    static async fetchAllIds(){
+        const client = await pool.connect();
+        try{
+            const userInfo = await client.query("SELECT student_id FROM test_results;");
+            if (userInfo.rows.length > 0){
+                let result = []
+                userInfo.rows.forEach(element => {
+                    result.push(element.student_id)
+                })
+                return result;
+            }else{
+                return null
+            }
+        }catch(err){
+            console.error("Error:", err)
+        }finally{
+            if (client){
+                client.release();
+            }
+        }
+    }
     async save(){
             const client = await pool.connect();
         try{
@@ -29,6 +51,77 @@ class TestResult{
             }
         }
     }
+
+    static async update(student_id, data){
+        const client  = await pool.connect();
+        try{
+            await client.query("BEGIN")
+            const dataKeys = Object.keys(data);
+            const columnToCompare = {
+                users: ["username", "role"],
+                students_info: ["full_name", "email", "grade"],
+                test_results: ["answer", "status", "attempt_time", "attempted_at"]
+            }
+            let columnToUpdate = {
+                users: [],
+                students_info: [],
+                test_results: []
+            }
+            let rowToUpdate = {
+                users: [],
+                students_info: [],
+                test_results: []
+            }
+            dataKeys.forEach(key => {
+                if (columnToCompare.users.includes(key)){
+                    columnToUpdate.users.push(key)
+                    rowToUpdate.users.push(data[key])
+                }else if (columnToCompare.students_info.includes(key)){
+                    columnToUpdate.students_info.push(key)
+                    rowToUpdate.students_info.push(data[key])
+                }else if (columnToCompare.test_results.includes(key)){
+                    columnToUpdate.test_results.push(key)
+                    rowToUpdate.test_results.push(data[key])
+                }
+            })
+            
+            if (columnToUpdate.users.length !== 0){
+                const setUserClause = columnToUpdate.users.map((key, index) => `${key} = $${index+1}`).join(', ');
+                const updateUserQuery = `UPDATE users SET ${setUserClause} WHERE user_id = ${student_id} RETURNING *;`;
+                await client.query(updateUserQuery, [...rowToUpdate.users]);
+                
+            }
+            if (columnToUpdate.students_info.length !== 0){
+                const setUserClause = columnToUpdate.students_info.map((key, index) => `${key} = $${index+1}`).join(', ');
+                const updateUserQuery = `UPDATE students_info SET ${setUserClause} WHERE student_id = ${student_id} RETURNING *;`;
+                await client.query(updateUserQuery, [...rowToUpdate.students_info]);
+                
+            }
+            if (columnToUpdate.test_results.length !== 0){
+                const setUserClause = columnToUpdate.test_results.map((key, index) => `${key} = $${index+1}`).join(', ');
+                const updateUserQuery = `UPDATE test_results SET ${setUserClause} WHERE student_id = ${student_id} RETURNING *;`;
+                await client.query(updateUserQuery, [...rowToUpdate.test_results]);
+                
+            }
+
+            await client.query("COMMIT")
+            
+            
+            
+            
+            
+        }catch(err){
+            console.error("Error:", err)
+        }finally{
+            if (client){
+                await client.query("ROLLBACK")
+                client.release();
+            }
+        }
+
+    }
+
+    
 
  
     static async findByStudentId(studentId){
@@ -66,6 +159,8 @@ class TestResult{
         }
     }
 }
+// TestResult.fetchAllIds().then(result => console.log(result))
+
 
 
 
