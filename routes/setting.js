@@ -4,7 +4,7 @@ const {checkAuthenticated, checkNotAuthenticated, checkRole} = require("../middl
 const teacherSettingRouter = express.Router();
 
 teacherSettingRouter.get("/teacher/setting/:page", checkAuthenticated, checkRole("teacher"), renderSetting);
-teacherSettingRouter.post("/teacher/setting/:page/:section", checkAuthenticated, checkRole("teacher"), updateTest);
+teacherSettingRouter.post("/teacher/setting/:page", checkAuthenticated, checkRole("teacher"), updateTest);
 
 
 module.exports = {teacherSettingRouter}

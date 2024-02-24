@@ -76,13 +76,10 @@
 }
 
 .table_header {
+  display: inline-flex;
   border: none;
   border-radius: 2rem 2rem 0 0;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-
   background-color: rgb(112, 66, 205);
   width: 100%;
   padding: 2rem 1.5rem 2rem 1.5rem;
@@ -98,10 +95,91 @@
 
 
 .table_header p {
+  width: 30%;
+  margin-top: 0.75vh;
   margin-left: 2rem;
   color: white;
+  line-height: -8;
 }
 
+
+
+
+.search_bar_container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+  background-color: rgb(248, 230, 253);
+  padding: 0.25rem 3rem 0.8rem 0.75rem;
+  width: 25%;
+  height: 45px;
+  margin-left: 34vw;
+  border-radius: 40px;
+  line-height: 1.2;
+  transition: width 0.3s, transform 0.3s;
+}
+
+.search_bar input{
+  width: 16.5vw;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  margin: 0 0 0 0.5rem;
+  padding: 0 0 0 -1rem;
+  font-size: 17px;
+
+} 
+
+.search_bar button{
+  position: absolute;
+  border: none;
+  width: 3%;
+  height: auto;
+  background-color: transparent;
+  margin-top: 1vh;
+  margin-left: 0.5vw;
+}
+
+.search_bar button img{
+  width: 30px;
+  height: auto;
+
+}
+
+
+
+.sort_id, .sort_name, .sort_class, .sort_no__pi_correct {
+  border: none;
+  background-color: transparent;
+  font-weight: 600;
+  color: white;
+  vertical-align: middle;
+
+}
+
+.material-symbols-outlined{
+  margin-top: -0.5vh;
+  font-weight: 600;
+  font-size: 24px;
+  vertical-align: middle;
+  transition: transform 0.3s;
+}
+
+.toggle-sort-checkbox {
+  display: none; /* Hide the checkbox */
+}
+
+/* .toggle-sort-checkbox:checked + .sort_id .material-symbols-outlined,
+.toggle-sort-checkbox:checked + .sort_name .material-symbols-outlined,
+.toggle-sort-checkbox:checked + .sort_class .material-symbols-outlined,
+.toggle-sort-checkbox:checked + .sort_no__pi_correct .material-symbols-outlined {
+  transform: rotate(180deg);
+} */
+
+.rotated{
+  transform: rotate(180deg);
+
+}
 
 
 table {

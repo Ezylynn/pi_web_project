@@ -21,13 +21,20 @@ const renderTest = async (req,res) => {
 const getTime = async (req,res) => {
     try{
         const test = await Test.find({ test_name: "Pi Test" });
+        const {test_code} = req.body
+        const realTestCode = test.getTestCode()
+        if (test_code.toString() === realTestCode.toString()){
+            const startTimeFormatted = convertToTimeFormat(test.start_time);
+            const endTimeFormatted = convertToTimeFormat(test.end_time);
+            const time = subtractTimes(startTimeFormatted, endTimeFormatted);
+        
+            res.status(200).json({ time });
+        }else{
+            res.status(403).json({message: "Invalid Test Code"})
+        }
         
         // Ensure that we are getting the start_time and end_time correctly.
-        const startTimeFormatted = convertToTimeFormat(test.start_time);
-        const endTimeFormatted = convertToTimeFormat(test.end_time);
-        const time = subtractTimes(startTimeFormatted, endTimeFormatted);
         
-        res.json({ time });
     }catch(err){
         throw err
     }

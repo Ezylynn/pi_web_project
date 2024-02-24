@@ -92,7 +92,7 @@
            
             <ul class = "vertical-nav-bar">
                 
-                <li><a href="/api/v1/setting/test" class = "<%= page === "test"? "test-on": "test"%>">Test</a></li>
+                <li><a href="/api/v1/teacher/setting/test" class = "<%= page === "test"? "test-on": "test"%>">Test</a></li>
                 
                        
                        
@@ -101,25 +101,25 @@
                 
             </ul>
             
-            <form action="/api/v1/teacher/setting/<%= page %>/time" method = "POST">
+            <form action="/api/v1/teacher/setting/test" method = "POST" id = "test-form">
                 <div id = "test-time-section">
-                    <h2>Testing Time</h2>
+                    <h2>Change Setting</h2>
                     <div class = "section-child">
                         <label for="start-time">Start Time:</label>
-                        <input name="start_time" id="start-time" type="time" step="1">
+                        <input name="start_time" id="start-time" type="time" step="1" required>
                     </div>
                     <div class = "section-child">
                         <label for="end-time">End Time:</label>
-                        <input name="end_time" id="end-time" type="time" step="1">
+                        <input name="end_time" id="end-time" type="time" step="1" required>
                     </div>
                     <div class = "section-child">
                         <label for="test-date">Date:</label>
-                        <input name="test_date" id="test-date" type ="date">
+                        <input name="test_date" id="test-date" type ="date" required>
 
                     </div>
                     <div class = "section-child">
                         <label for="test-name">Choose Test:</label>
-                        <input list ="test-names" id="test-name" name="test_name">
+                        <input list ="test-names" id="test-name" name="test_name" required>
                         <datalist  id="test-names">
                             <option value="Pi Test">
                         
@@ -131,6 +131,16 @@
                     </div>
                     
                         
+                </div>
+                <div id = "test-info-section">
+                    <h2>Testing Info</h2>
+                    <div class = "section-child test-info-child">
+                        <div id = "test-code">Test Code: <%= testCode %></div>
+                    </div>
+                    <div class = "section-child test-info-child">
+                        <div id = "test-time-display">Test Time: <%= `${piTest.start_time} - ${piTest.end_time} ${piTest.test_date} ` %></div>
+                    </div>
+                    
                 </div>
                 
                 
@@ -153,7 +163,7 @@
 
         </footer>
    
-    <script type = "module" src = "/js/leaderboard.js"></script>
+    <script type = "module" src = "/js/setting.js"></script>
     <script type = "module" src = "/js/logOut.js"></script>
 
 </body>

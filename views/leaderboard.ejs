@@ -91,6 +91,16 @@
         <section class="container">
             <section class="table_header">
                 <p class="title_1">Student leaderboard</p>
+
+                <div class="search_bar_container">
+                    <form class="search_bar" action="">
+                        <input type="text" placeholder="Search...">
+                        <button type="submit"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAfFJREFUaEPtmWFOBDEIhbsnU0+mezL1ZLokQ9IQaHlAdzvJzJ9V06F88KBbvLWTP7eT+98ugFdnMJuB99baZwdBv9Pzc3z+Hp9fq0CjAN8PJ9lZr2/3x8JyEBSAHOgj7nW+X1cKggBEom4BksQ+IvTyHQ8A61yTDGudotprn9by+lHGCIJthHg8AH+KZdqUnPZubkkvnYkZgCabzKYaSMbe8CDTNqsowFK7owxI6VQ4z2rUMjtTg1oj1ktalEIbDCpTQoSkZDm1MvrMRF2KIPoHDpL2wjOib0kJbqsegErtS0WlZaQBSKMrAaSM4DrwAMBpBY7UJQCygOHCAgBoaWo/zbmUQdD5JQCyBp4pIQKCMv7qGpAte0kRw0YBGUkAuONpGUh3BgAgfeJ7v0qsqIOSE98CSJ+Qjiykoz+reLlBZS2URH8GUHrx6DJSanfWc7WLB9wpOuetycbMD1ORnhetTRGQ0WSDnENswRcI7eLRG+lHKjylkCMVzxQvBOHJwOge62g26hIC1aBgCASAPKkcLVq2IAgUgMMZAdGGYWmIKEAPQj+/HX+Q43Uu0NEELwWRBYjWgHwvDLELwKi+hjWxE8AIwvwyuRuABnGqDMguN22pO2aAIaijTf//sDOAq8NdAK4wLVx0ZWBhcF2mT5+Bf3HmfDF3h+WLAAAAAElFTkSuQmCC"/></button>
+                    </form>
+                </div>
+
+
+
             </section>
 
             <section class = "table-section">
@@ -98,11 +108,11 @@
 
                     <thead>
                     
-                        <th>No.</th>
-                        <th>Name</th>
-                        <th>Class</th>
-                        <th>No. of Pi correct</th>
-                        <th></th> 
+                        <th>No. <input type="checkbox" id="toggle-sort-id" class="toggle-sort-checkbox"><label for="toggle-sort-id" class="sort_id"><span class="material-symbols-outlined">arrow_upward</span></label></th>
+                        <th>Name <input type="checkbox" id="toggle-sort-name" class="toggle-sort-checkbox"><label for="toggle-sort-name" class="sort_name"><span class="material-symbols-outlined">arrow_upward</span></label></th>
+                        <th>Class <input type="checkbox" id="toggle-sort-class" class="toggle-sort-checkbox"><label for="toggle-sort-class" class="sort_class"><span class="material-symbols-outlined">arrow_upward</span></label></th>
+                        <th>No. of Pi correct <input type="checkbox" id="toggle-sort-pi" class="toggle-sort-checkbox"><label for="toggle-sort-pi" class="sort_no__pi_correct"><span class="material-symbols-outlined">arrow_upward</span></label></th>
+                        <th></th>
                         
                         
 
@@ -144,7 +154,6 @@
 
 
     </main>
-    
 
     <!--DELETE-->
 

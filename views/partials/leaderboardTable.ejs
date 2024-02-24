@@ -1,0 +1,41 @@
+<table>
+
+                    <thead>
+                    
+                        <th>No. <input type="checkbox" id="toggle-sort-id" class="toggle-sort-checkbox"><label for="toggle-sort-id" class="sort_id"><span class="material-symbols-outlined">arrow_upward</span></label></th>
+                        <th>Name <input type="checkbox" id="toggle-sort-name" class="toggle-sort-checkbox"><label for="toggle-sort-name" class="sort_name"><span class="material-symbols-outlined">arrow_upward</span></label></th>
+                        <th>Class <input type="checkbox" id="toggle-sort-class" class="toggle-sort-checkbox"><label for="toggle-sort-class" class="sort_class"><span class="material-symbols-outlined">arrow_upward</span></label></th>
+                        <th>No. of Pi correct <input type="checkbox" id="toggle-sort-pi" class="toggle-sort-checkbox"><label for="toggle-sort-pi" class="sort_no__pi_correct"><span class="material-symbols-outlined">arrow_upward</span></label></th>
+                        <th></th>
+                        
+                        
+
+                        
+                    </thead>
+
+
+                    <tbody>
+                        <% for (let i = 0; i < studentRank.length; i++){ %>
+
+                            <tr>
+                                <td><%=i+1%></td>
+                                <td><%=studentRank[i].full_name%></td>
+                                <td><%=studentRank[i].grade%></td>
+                                <td><%=studentRank[i].score%></td>
+                                <td><a href="/api/v1/teacher/info/<%= studentRank[i].student_id %>">More</a></td>
+                            </tr>
+    
+    
+                        
+                        
+                        <% } %>
+
+                    </tbody>
+                
+
+
+
+
+                    
+        
+</table>

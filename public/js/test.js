@@ -10,29 +10,63 @@ const centeredMessage = document.querySelector(".centered-message");
 const strongElement = document.createElement("strong")
 const studentAnswer = document.querySelector("#student-answer");
 const userId = document.querySelector(".userId");
+const testCode = document.querySelector("#test-code")
+
 
 const submitTest = document.querySelector(".submit");
 strongElement.innerText = "F";
 
 let warningTimes = 0;
 let eventHandled = false;
+function activateProtection(){
+    document.addEventListener('paste', (event) => {
+        event.preventDefault();
+       
+    });
+    document.addEventListener('visibilitychange', () => {
+        if (!eventHandled && document.visibilityState === 'hidden') {
+            eventHandled = true;
+            debouncedRedirectToResult("suspended");
+        }
+    });
+    
+    window.addEventListener('blur', () => {
+        if (!eventHandled) {
+            eventHandled = true;
+            debouncedRedirectToResult("suspended");
+        }
+    });
+    document.addEventListener("fullscreenchange", warnToFullscreenChange);
+}
 
 function fetchTime() {
     fetch(`/api/v1/student/test/pi-test/${userId.value}`, {
-        method: "POST"
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            test_code: testCode.value
+        })
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error("Response was not okay");
+            alert("Test Code Typed Incorrectly!")
         }
         return response.json();
     }).then(response => {
         
         const { time } = response;
         let timeArray = time.split(":")
+        timer.style.display = "block";
+        testContainer.style.display = "block";
+        instruction.style.display = "none";
+        mainElement.style.display = "block";
         
 
         setTimer(parseInt(timeArray[0]), parseInt(timeArray[1]), parseInt(timeArray[2])); 
+        makeFullscreen();
+        activateProtection();
     }).catch(err => {
         console.error(err); 
     });
@@ -148,35 +182,16 @@ function setTimer(hours, minutes, seconds) {
 }
 
 
-document.addEventListener('paste', (event) => {
-    event.preventDefault();
-   
-});
-document.addEventListener('visibilitychange', () => {
-    if (!eventHandled && document.visibilityState === 'hidden') {
-        eventHandled = true;
-        debouncedRedirectToResult("suspended");
-    }
-});
 
-window.addEventListener('blur', () => {
-    if (!eventHandled) {
-        eventHandled = true;
-        debouncedRedirectToResult("suspended");
-    }
-});
 startButton.addEventListener("click", () => {
-    timer.style.display = "block";
-    testContainer.style.display = "block";
-    instruction.style.display = "none";
-    mainElement.style.display = "block";
+    
     fetchTime()
     
-    makeFullscreen();
+    
 } 
 )
 
-document.addEventListener("fullscreenchange", warnToFullscreenChange);
+
 
 
 submitTest.addEventListener("click", () => {
