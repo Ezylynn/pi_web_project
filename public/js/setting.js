@@ -1,9 +1,22 @@
-import { response } from "express";
-import {getFullscreenElement, toggleFullscreen, enableFullScreenOnKeyPress } from "./lib/fullScreen.js"
 
+import {getFullscreenElement, toggleFullscreen, enableFullScreenOnKeyPress, removeFullScreenOnKeyPress } from "./lib/fullScreen.js"
 
+const inputs = document.querySelectorAll("input")
 const testForm = document.querySelector("#test-form")
 
+
+
+inputs.forEach(input => {
+    // Disable fullscreen toggle on input focus
+    input.addEventListener("focus", () => {
+        console.log("hello")
+        removeFullScreenOnKeyPress();
+    });
+    // Re-enable fullscreen toggle on input blur (losing focus)
+    input.addEventListener("blur", () => {
+        enableFullScreenOnKeyPress();
+    });
+});
 
 
 testForm.addEventListener("submit", function(e) {
@@ -25,13 +38,16 @@ testForm.addEventListener("submit", function(e) {
             test_date: testData.test_date
         })
     }).then(response => {
+        
         if(!response.ok){
-            throw new Error("Response was not okay")
+            return response.text().then(text => { throw new Error(text) });
         }
+        
         return response.text()
         
     
     }).then(html => {
+        console.log(html)
         document.querySelector("#test-info-section").innerHTML = html
     }).catch(err => {
         console.error("Error", err)

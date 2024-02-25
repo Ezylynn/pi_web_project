@@ -31,10 +31,18 @@ export const toggleFullscreen = () => {
     }
 }
 
-export const enableFullScreenOnKeyPress = () => {
-    document.addEventListener("keydown", e => {
-    if (e.key === 'f' || e.key === 'F'){
+function handleFullScreenToggle(e) {
+    if (e.key === 'f' || e.key === 'F') {
         toggleFullscreen();
     }
-})
 }
+
+// Function to enable the fullscreen toggle
+export const enableFullScreenOnKeyPress = () => {
+    document.addEventListener("keydown", handleFullScreenToggle);
+};
+
+// Function to disable the fullscreen toggle
+export const removeFullScreenOnKeyPress = () => {
+    document.removeEventListener("keydown", handleFullScreenToggle);
+};

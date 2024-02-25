@@ -1,4 +1,4 @@
-import {getFullscreenElement, toggleFullscreen, enableFullScreenOnKeyPress } from "./lib/fullScreen.js"
+import {getFullscreenElement, toggleFullscreen, enableFullScreenOnKeyPress, removeFullScreenOnKeyPress} from "./lib/fullScreen.js"
 const timer = document.querySelector(".timer");
 
 const mainElement = document.querySelector("main");
@@ -11,6 +11,7 @@ const strongElement = document.createElement("strong")
 const studentAnswer = document.querySelector("#student-answer");
 const userId = document.querySelector(".userId");
 const testCode = document.querySelector("#test-code")
+const inputs = document.querySelectorAll("input")
 
 
 const submitTest = document.querySelector(".submit");
@@ -181,6 +182,18 @@ function setTimer(hours, minutes, seconds) {
     }, 1000);
 }
 
+
+inputs.forEach(input => {
+    // Disable fullscreen toggle on input focus
+    input.addEventListener("focus", () => {
+        console.log("hello")
+        removeFullScreenOnKeyPress();
+    });
+    // Re-enable fullscreen toggle on input blur (losing focus)
+    input.addEventListener("blur", () => {
+        enableFullScreenOnKeyPress();
+    });
+});
 
 
 startButton.addEventListener("click", () => {

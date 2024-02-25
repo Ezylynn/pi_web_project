@@ -63,8 +63,10 @@ const sortLeaderboard = async (req,res) => {
         console.error(err);
         res.status(500).send('Error rendering leaderboard');
     } else {
+       
         // Send back only the rendered HTML fragment for the leaderboard table, not an entire document.
         res.send(html);
+        
     }
 })
 

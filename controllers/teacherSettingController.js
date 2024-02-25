@@ -16,11 +16,9 @@ const renderSetting = async (req,res) => {
 const updateTest = async (req,res) => {
     
     try{
-        const {page} = req.params;
-        const piTest = await Test.find({test_name: "Pi Test"})
-        console.log(page)
         
-        const testCode = piTest.getTestCode()
+        const {page} = req.params;
+       
 
         if (page === "test"){
             const {test_date, start_time, end_time, test_name} = req.body;
@@ -29,6 +27,9 @@ const updateTest = async (req,res) => {
 
             await Test.update(test_name, {test_date, start_time: `${test_date} ${start_time}`, end_time: `${test_date} ${end_time}`})
         }
+        
+        const piTest = await Test.find({test_name: "Pi Test"})
+        const testCode = piTest.getTestCode()
         piTest.start_time = convertToTimeFormat(piTest.start_time)
         piTest.end_time = convertToTimeFormat(piTest.end_time)
         piTest.test_date = convertToYearMonthDay(piTest.test_date)
@@ -38,7 +39,8 @@ const updateTest = async (req,res) => {
                 res.status(500).send('Error rendering testing info');
             } else {
                 
-                res.send(html);
+                
+                res.status(200).send(html)
             }
         })
     }catch(err){
