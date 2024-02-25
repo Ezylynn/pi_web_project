@@ -1,0 +1,10 @@
+<% for (let i = 0; i < teacherInfo.length; i++){ %>
+
+    <tr>
+        <td><%=i+1%></td>
+        <td><%= teacherInfo[i].username%></td>
+        <td><%= teacherInfo[i].full_name%></td>
+        <td><%= teacherInfo[i].email%></td>
+        
+    </tr>
+<% } %>

@@ -1,0 +1,473 @@
+
+
+
+
+
+.pi{
+    font-size: 30px;
+    font-family: 'Times New Roman';
+  }
+
+
+.underline-text-small{
+    position: relative;
+    color: white;
+
+}
+
+  
+.underline-text-small:hover {
+    color: white;
+  }
+  
+.underline-text-small::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 30%;
+    height: 0.25vh;
+    left: 8vw;
+    top: 7vh;
+    background-color: rgb(255, 255, 255);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+
+}
+  
+.underline-text-small:hover::before {
+    transform: scaleX(1);
+}
+
+
+
+
+
+
+
+.pi{
+  font-size: 30px;
+  font-family: 'Times New Roman';
+}
+
+
+.underline-text-small{
+  position: relative;
+  color: white;
+
+}
+
+
+.underline-text-small:hover {
+  color: white;
+}
+
+.underline-text-small::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 30%;
+  height: 0.25vh;
+  left: 8vw;
+  top: 7vh;
+  background-color: rgb(255, 255, 255);
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+
+}
+
+.underline-text-small:hover::before {
+  transform: scaleX(1);
+}
+/* add user section */
+
+
+.add_user_container{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 27%;
+    height: 65vh;
+    margin: 0 5vw 0 0;
+    padding-top: 7.5vh;
+    padding-bottom: 7vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    border: none;
+    background-color: rgb(55, 40, 93);
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.title_1{
+    background-color: rgb(112, 66, 205); 
+    width: 100%;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    color: white;
+    font-size: 35px;
+    font-weight: bolder;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 3vh;
+}
+
+
+.add_user_container input[type="text"], input[type="email"], input[type="password"] {
+    width: 20vw;
+    height: 6vh;
+    margin-bottom: 3vh;
+    padding-right: 0.5vw;
+    padding-left: 0.5vw;
+    padding-top: 0.5vh;
+    background-color: rgb(248, 230, 253);
+    border: none;
+    border-radius: 10px;
+    text-indent: 2px;
+    line-height: 50vh;
+    font-size: 17px;
+    color: rgb(97, 97, 97);
+
+}
+
+
+
+.name::placeholder, .email::placeholder, .pass::placeholder{
+    color: gray;
+    font-size: 17px;
+}
+
+.add_user_container input[type="radio"] {
+    text-align: center;
+    transform: scale(1.1); /* Adjust the scale value as per yer preference */
+    margin-left: 3vw;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.login_prompt{
+    font-size: 20px;
+    font-weight: 650;
+    color:rgb(104, 104, 104);
+    margin-bottom: 1.5vh;
+
+}
+
+
+.buttons{
+    text-align: center;
+}
+
+.add_user_container button[type="submit"], button[type="reset"]{
+    text-align: center;
+    margin-top: 1.5vh;
+    width: 60%;
+    height: auto;
+    padding: 1.5vh 0 1.5vh 0;
+    font-size: 18px;
+    color: white;
+    border: none;
+    background-color: rgb(112, 66, 205) ;
+    border-radius: 20px;
+    transition: 0.4s;
+}
+
+.add_user_container button[type="reset"]{
+  margin-top: -0.5vh;
+}
+
+.add_user_container button[type="submit"]:hover, button[type="reset"]:hover{
+    transition: 0.4s;
+    background-color:  white;
+
+    color: rgb(112, 66, 205) ;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* main background  */
+
+
+.bg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    height: 100vh;
+    margin-top: 10vh;
+    height: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+    
+
+}
+
+main.bg{
+    height: 100vh;
+    padding: 0 5vw;
+    
+}
+
+
+
+/* override this url  */
+
+.layer{
+background-image: url('/images/low-poly-grid-haikei.svg');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* account list */
+  
+  .pi{
+      font-size: 30px;
+      font-family: 'Times New Roman';
+    }
+    
+ 
+  
+  
+    .table_container {
+      border-radius: 2rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      width: auto;
+      height: 75vh;
+      
+      background-color: rgb(55, 40, 93);
+      padding-bottom: 3rem;
+      border: none;
+      margin-top: -2.5vh;
+      
+    }
+  
+  
+  
+  
+   .table-section{
+    border: none;
+    border-radius: 1.5rem;
+    margin-top: 2.5rem;
+    width: auto;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    
+    height: 85%;
+    overflow-y: scroll;
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* Set the color of the scroll bar */
+  } 
+  
+  /* For WebKit based browsers (Chrome, Safari) */
+  .table-section::-webkit-scrollbar {
+    width: 10px; /* Set the width of the scrollbar */
+  }
+  
+  .table-section::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5); /* Set the color of the scrollbar thumb */
+  }
+  
+  .table-section::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1); /* Set the color of the scrollbar track */
+  }
+  
+  .table_header {
+    display: inline-flex;
+    border: none;
+    border-radius: 2rem 2rem 0 0;
+    overflow: hidden;
+    background-color: rgb(112, 66, 205);
+    width: 100%;
+    padding: 2rem 1.5rem 1rem 1.5rem;
+
+  
+  
+    font-size: 30px;
+    font-weight: 700;
+
+    z-index: 1;
+    
+  }
+  
+  
+  .table_header p {
+    width: 30%;
+    margin-top: 0.75vh;
+    margin-left: 2rem;
+    color: white;
+    line-height: -8;
+  }
+  
+  
+  
+  
+  /* .search_bar_container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: start;
+    background-color: rgb(248, 230, 253);
+    padding: 0.25rem 15rem 0.8rem 0.75rem;
+    width: 25%;
+    height: 45px;
+    margin-left: 16vw;
+    margin-top: 2.3vh;
+    border-radius: 40px;
+    line-height: 5;
+    transition: width 0.3s, transform 0.3s;
+  }
+  
+  .search_bar input{
+    width: 13vw;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    margin: 0 0 0 0.5rem;
+    font-size: 17px;
+
+  
+  } 
+  
+  .search_bar button{
+    position: absolute;
+    border: none;
+    width: 3%;
+    height: auto;
+    background-color: transparent;
+    margin-top: 8.1vh;
+    margin-right: 0.7vw;
+  }
+  
+  .search_bar button img{
+    width: 30px;
+    height: auto;
+  
+  }
+   */
+  
+  
+  .sort_id, .sort_name, .sort_class, .sort_no__pi_correct {
+    border: none;
+    background-color: transparent;
+    font-weight: 600;
+    color: white;
+    vertical-align: middle;
+  
+  }
+  
+  .material-symbols-outlined{
+    margin-top: -0.5vh;
+    font-weight: 600;
+    font-size: 24px;
+    vertical-align: middle;
+    transition: transform 0.3s;
+  }
+  
+  .toggle-sort-checkbox {
+    display: none; /* Hide the checkbox */
+  }
+  
+  /* .toggle-sort-checkbox:checked + .sort_id .material-symbols-outlined,
+  .toggle-sort-checkbox:checked + .sort_name .material-symbols-outlined,
+  .toggle-sort-checkbox:checked + .sort_class .material-symbols-outlined,
+  .toggle-sort-checkbox:checked + .sort_time .material-symbols-outlined,
+  .toggle-sort-checkbox:checked + .sort_email .material-symbols-outlined {
+    transform: rotate(180deg);
+  }  */
+  
+  .rotated{
+    transform: rotate(180deg);
+  
+  }
+  
+  
+  table {
+    border: none;
+    background-color: rgb(200, 183, 244);
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0; /* Ensure there is no spacing between cells */
+  }
+  
+  
+  table thead th {
+    font-size: 20px;
+    padding: 1.5rem 1.5rem 1.5em 1.5rem;
+    position: sticky;
+    top: 0; /* Ensures the table header sticks to the top of the table */
+    background-color: rgb(99, 59, 160); /* Background color for the table header */
+    color: white; /* Text color for the table header */
+    z-index: 2; 
+    
+  }
+  
+  
+  
+  table tbody td {
+    padding: 1.5rem 1.7rem 1.5rem 1.5rem;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 500;
+  
+    
+  }
+  
+  tbody tr:nth-child(even){
+    background-color:rgb(180, 159, 233) ;
+  }
+  
+  tbody tr:hover{
+  background-color:rgb(153, 130, 209);
+  
+  }
+  
+  
+  
+  .footer{
+   
+
+      position: absolute;
+      width: 100vw;
+      height: 20vh;
+      background-color:  rgb(96, 100, 238);
+  }
+  
+  .footer p{
+      font-weight: bolder;
+      color: white;
+      margin-top: 8vh;
+      font-size: 20px;
+      text-align: center;
+  
+  }

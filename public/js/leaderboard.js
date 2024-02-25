@@ -1,6 +1,6 @@
 import {getFullscreenElement, toggleFullscreen, enableFullScreenOnKeyPress } from "./lib/fullScreen.js"
 
-
+const role = document.querySelector(".user-role")
 
 const sortStates = {
     full_name: false,
@@ -46,7 +46,7 @@ const sortStates = {
   }
   
   function fetchSort(type, state) {
-    fetch("/api/v1/teacher/leaderboard", {
+    fetch(`/api/v1/${role.value}/leaderboard`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

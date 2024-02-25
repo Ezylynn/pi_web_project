@@ -57,6 +57,7 @@
   margin-top: 2.5rem;
   width: 95%;
   height: 85%;
+  
   overflow-y: scroll;
   scrollbar-width: thin; /* Set the width of the scrollbar */
   scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* Set the color of the scroll bar */
@@ -89,7 +90,7 @@
   font-size: 30px;
   font-weight: 700;
 
-  z-index: 1;
+ 
   
 }
 
@@ -99,13 +100,13 @@
   margin-top: 0.75vh;
   margin-left: 2rem;
   color: white;
-  line-height: -8;
+  /* line-height: -8; */
 }
 
 
 
 
-.search_bar_container {
+/* .search_bar_container {
   display: inline-flex;
   align-items: center;
   justify-content: start;
@@ -132,6 +133,7 @@
 
 .search_bar button{
   position: absolute;
+  z-index: 2;
   border: none;
   width: 3%;
   height: auto;
@@ -143,8 +145,10 @@
 .search_bar button img{
   width: 30px;
   height: auto;
+  position: absolute;
+  
 
-}
+} */
 
 
 
@@ -195,10 +199,11 @@ table thead th {
   font-size: 20px;
   padding: 1.5rem 1.5rem 1.5em 1.5rem;
   position: sticky;
+  z-index: 0;
   top: 0; /* Ensures the table header sticks to the top of the table */
   background-color: rgb(99, 59, 160); /* Background color for the table header */
   color: white; /* Text color for the table header */
-  z-index: 2; 
+  
   
 }
 
@@ -239,3 +244,5 @@ background-color:rgb(153, 130, 209);
     text-align: center;
 
 }
+
+

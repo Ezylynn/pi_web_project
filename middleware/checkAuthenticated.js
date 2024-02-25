@@ -28,6 +28,23 @@ const checkRole = (role) => (req,res,next) => {
     }
 }
 
+const enhancedCheckRole = (roleToExclude) => (req, res, next) => {
+    if (!req.user || !req.user.role) {
+        return res.status(403).redirect("/api/v1/sign-in");
+    }
+
+    if (req.user.role === roleToExclude) {
+        return res.status(403).redirect("/api/v1/sign-in");
+    }
+
+    const { userRole } = req.params;
+    if (req.user.role !== userRole) {
+        return res.status(403).redirect("/api/v1/sign-in");
+    }
+
+    next();
+};
+
 const ensureUniqueAccount = (...valueToCheck) => async (req,res,next) => {
     const storedValue = await Student.fetchEssentials()
     for (let i = 0; i < valueToCheck.length; i++){
@@ -41,4 +58,4 @@ const ensureUniqueAccount = (...valueToCheck) => async (req,res,next) => {
     next()
 }
 
-module.exports = { checkAuthenticated,checkNotAuthenticated, checkRole, ensureUniqueAccount};
+module.exports = { checkAuthenticated,checkNotAuthenticated, checkRole, ensureUniqueAccount, enhancedCheckRole};

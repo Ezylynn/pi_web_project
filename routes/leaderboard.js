@@ -1,11 +1,11 @@
 const express = require('express');
 const {renderLeaderboard, sortLeaderboard} = require("../controllers/leaderboardController")
 const leaderboardRouter = express.Router();
-const {checkAuthenticated, checkNotAuthenticated, checkRole} = require("../middleware/checkAuthenticated")
+const {checkAuthenticated, checkNotAuthenticated, checkRole, enhancedCheckRole} = require("../middleware/checkAuthenticated")
 
 
-leaderboardRouter.get("/teacher/leaderboard",  checkAuthenticated, checkRole("teacher"), renderLeaderboard);
+leaderboardRouter.get("/:userRole/leaderboard",  checkAuthenticated, enhancedCheckRole("student"), renderLeaderboard);
 
-leaderboardRouter.post("/teacher/leaderboard", checkAuthenticated, checkRole("teacher"), sortLeaderboard  )
+leaderboardRouter.post("/:userRole/leaderboard", checkAuthenticated, enhancedCheckRole("student"), sortLeaderboard  )
 
 module.exports = {leaderboardRouter}

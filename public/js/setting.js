@@ -3,6 +3,7 @@ import {getFullscreenElement, toggleFullscreen, enableFullScreenOnKeyPress, remo
 
 const inputs = document.querySelectorAll("input")
 const testForm = document.querySelector("#test-form")
+const role = document.querySelector(".user-role")
 
 
 
@@ -26,7 +27,7 @@ testForm.addEventListener("submit", function(e) {
     for (const [key, value] of formData.entries()) {
         testData[key] = value;
     }
-    fetch("/api/v1/teacher/setting/test", {
+    fetch(`/api/v1/${role.value}/setting/test`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

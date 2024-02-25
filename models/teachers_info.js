@@ -24,6 +24,7 @@ class Teacher{
             }
         }
     }
+   
 
  
     static async findByName(name){
@@ -60,7 +61,26 @@ class Teacher{
             }
         }
     }
+    static async fetchEssentials(){
+        const client = await pool.connect();
+        try{
+            const userInfo = await client.query("SELECT teachers_info.teacher_id, users.user_id, users.role, users.username, teachers_info.full_name,  teachers_info.email,  users.created_at FROM teachers_info FULL JOIN users ON users.user_id = teachers_info.teacher_id WHERE users.role = 'teacher';");
+            if (userInfo.rows.length > 0){
+                return userInfo.rows;
+            }else{
+                return null
+            }
+        }catch(err){
+            console.error("Error:", err)
+        }finally{
+            if (client){
+                client.release();
+            }
+        }
+    }
 }
+
+
 
 
 

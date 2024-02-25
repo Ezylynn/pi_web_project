@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in</title>
-    
-    
     <link rel="stylesheet" href="/css/mainUser.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/sign_in.css">
@@ -44,10 +42,12 @@
 
                     </ul>
                 </li>
-                <li><a href="/api/v1/student/instruction">
-                        <p class="underline-text-small">Quiz</p>
-                    </a>
-                </li>
+               
+                    <li><a href="/api/v1/student/instruction">
+                            <p class="underline-text-small">Quiz</p>
+                        </a>
+                    </li>
+                
                 <li class = "account" id = "account">
                     <a href="/api/v1/sign-in" class = "account-link" id = "account-link"><span class="material-symbols-outlined account-logo underline-text-small" id = "account-logo">account_circle</span></a>
                     <ul class = "account-menu" id = "account-menu">
@@ -70,9 +70,9 @@
         
         
         <section class="container">
-            <form  action="/api/v1/sign-in" method = "POST">
+            <form  action="/api/v1/superadmin/login" method = "POST">
         
-                <p class="title_1">Login</p>
+                <p class="title_1">Super Admin Login</p>
         
                 <div>
                         <input type="text" class="name" name="username"  placeholder="Username" required>
@@ -86,21 +86,9 @@
                         <input type="password" class="pass" name="password" placeholder="Password" required>
                     </label>
                 </div>
+                <input type="hidden" name = "role" value = "superadmin">
         
-                <div>
-                    <p class="login_prompt">Login as:</p>
-        
-                    <label class="student" for="student">
-                        <input type="radio" id="student" name="role" value="student" required>
-                        Student
-                    </label>
-        
-                    <label class="teacher" for="teacher">
-                        <input type="radio" id="teacher" name="role" value = "teacher" required>
-                        Teacher
-                    </label>
-                
-                </div>
+               
 
                 <div class="buttons">
                     <button class="reset" type="reset">Reset</button>

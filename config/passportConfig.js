@@ -7,9 +7,10 @@ passport.use(new LocalStrategy({
 },
     async function(req, username, password, done){
         try{
+            console.log(username)
             const user = await User.findByUsername(username);
             
-
+            
             if (!user) return done(null, false, {message: 'User not found'})
 
             const isMatch = await user.verifyPassword(password);

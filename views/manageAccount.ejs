@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
     
     <% if (userRole === "student"){ %>
         <link rel="stylesheet" href="/css/mainUser.css">
@@ -12,14 +11,13 @@
         <link rel="stylesheet" href="/css/mainAdmin.css">
     <% }else if (userRole === "superadmin"){ %>
         <link rel="stylesheet" href="/css/mainSuperAdmin.css">
-
     <% } %>
-    <link rel="stylesheet" href="/css/leaderboard.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    
+    <link rel="stylesheet" href="/css/manageAccount.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Manage Account</title>
 </head>
 <body>
+    <!-- override header menu -->
     <header class="header">
 
         <nav class="nav_bar">
@@ -96,16 +94,51 @@
         </nav>
 
        
-
        
 
     </header>
 
+
     <main  class="bg layer">
 
-        <section class="container">
+        <section class="add_user_container">
+            <form action = "/api/v1/superadmin/manage-account" method = "POST">
+        
+                <p class="title_1">Add Account</p>
+
+                <div>
+                    <input type="text" class="full_name" name="full_name"  placeholder="Full name" required>
+                </div>
+
+                <div>
+                    <input type="text" class="email" name="email"  placeholder="Email" required>
+                </div>
+        
+                <div>
+                        <input type="text" class="name" name="username"  placeholder="Username" required>
+                </div>
+   
+                <div>
+                    <label class="password">
+                
+                        <input type="password" class="pass" name="password" placeholder="Password" required>
+                    </label>
+
+
+                <div class="buttons">
+                    <button class="reset" type="reset">Reset</button>
+                    <button class="submit" type="submit">Create account</button>
+                </div>
+        
+            </form>
+        
+        
+        </section>
+
+
+        <section class="table_container">
             <section class="table_header">
-                <p class="title_1">Student leaderboard</p>
+                <h1 class="title_1">Account list</p>
 
                 <!-- <div class="search_bar_container">
                     <form class="search_bar" action="">
@@ -120,15 +153,14 @@
 
             <section class = "table-section">
                 <table>
-                    <input type="hidden" name = "role" class = "user-role" value = <%= userRole %>>
 
                     <thead>
                     
                         <th>No. <input type="checkbox" id="toggle-sort-id" class="toggle-sort-checkbox"><label for="toggle-sort-id" class="sort_id"><span class="material-symbols-outlined">arrow_upward</span></label></th>
-                        <th>Name <input type="checkbox" id="toggle-sort-name" class="toggle-sort-checkbox"><label for="toggle-sort-name" class="sort_name"><span class="material-symbols-outlined">arrow_upward</span></label></th>
-                        <th>Class <input type="checkbox" id="toggle-sort-class" class="toggle-sort-checkbox"><label for="toggle-sort-class" class="sort_class"><span class="material-symbols-outlined">arrow_upward</span></label></th>
-                        <th>No. of Pi correct <input type="checkbox" id="toggle-sort-pi" class="toggle-sort-checkbox"><label for="toggle-sort-pi" class="sort_no__pi_correct"><span class="material-symbols-outlined">arrow_upward</span></label></th>
-                        <th></th>
+                        <th>Username<input type="checkbox" id="toggle-sort-username" class="toggle-sort-checkbox"><label for="toggle-sort-username" class="sort_username"><span class="material-symbols-outlined">arrow_upward</span></label></th>
+                        <th>Full Name <input type="checkbox" id="toggle-sort-full-name" class="toggle-sort-checkbox"><label for="toggle-sort-full-name" class="sort_full_name"><span class="material-symbols-outlined">arrow_upward</span></label></th>
+                        <th>Email <input type="checkbox" id="toggle-sort-email" class="toggle-sort-checkbox"><label for="toggle-sort-email" class="sort_email"><span class="material-symbols-outlined">arrow_upward</span></label></th>
+                        
                         
                         
 
@@ -137,20 +169,19 @@
 
 
                     <tbody>
-                        <% for (let i = 0; i < studentRank.length; i++){ %>
+                       <% for (let i = 0; i < teacherInfo.length; i++){ %>
 
                             <tr>
                                 <td><%=i+1%></td>
-                                <td><%=studentRank[i].full_name%></td>
-                                <td><%=studentRank[i].grade%></td>
-                                <td><%=studentRank[i].score%></td>
-                                <td><a href="/api/v1/<%= userRole%>/info/<%= studentRank[i].student_id %>">More</a></td>
+                                <td><%= teacherInfo[i].username%></td>
+                                <td><%= teacherInfo[i].full_name%></td>
+                                <td><%= teacherInfo[i].email%></td>
+                                
                             </tr>
-    
-    
-                        
-                        
                         <% } %>
+    
+    
+            
 
                     </tbody>
                 
@@ -167,23 +198,39 @@
 
 
         </section>
+        
+
+
 
 
     </main>
 
-    <!--DELETE-->
+
+    
 
 
 
 
-        <footer class="footer">
+    <footer class="footer">
 
-            <p>Made by BVIS students</p>
+        <p>Made by BVIS students</p>
 
-        </footer>
-   
-    <script type = "module" src = "/js/leaderboard.js"></script>
-    <script type = "module" src = "/js/logOut.js"></script>
+    </footer>
 
+
+    <script src = "/js/manageAccount.js" type = "module"></script>
+    <script src = "/js/logOut.js" type = "module"></script>
+
+
+       
+
+       
+
+    
+
+
+
+
+    
 </body>
 </html>

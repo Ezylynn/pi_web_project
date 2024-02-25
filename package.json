@@ -25,7 +25,8 @@
     "migrate": "node-pg-migrate",
     "seed-user": "node database/seeds/loginUser.js",
     "seed-admin": "node database/seeds/loginAdmin.js",
-    "seed-test": "node database/seeds/createTest.js"
+    "seed-test": "node database/seeds/createTest.js",
+    "seed-super-admin": "node database/seeds/loginSuperAdmin.js"
   },
   "keywords": [],
   "author": "TheValueProducers <145182357+TheValueProducers@users.noreply.github.com>",

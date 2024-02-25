@@ -1,6 +1,7 @@
 const express = require('express');
 const {renderSignIn, logOut} = require("../controllers/signInController");
 
+
 const {checkAuthenticated, checkNotAuthenticated, checkRole} = require("../middleware/checkAuthenticated")
 const {passport} = require("../config/passportConfig")
 
@@ -17,6 +18,6 @@ signInRouter.post("/sign-in", checkNotAuthenticated, passport.authenticate('loca
     res.redirect(`/api/v1/${req.user.role}/home`)
 })
 
-signInRouter.delete("/:userRole/log-out", logOut )
+signInRouter.delete("/:userRole/log-out",logOut )
 
 module.exports = {signInRouter}
