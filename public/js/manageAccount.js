@@ -65,16 +65,20 @@ form.addEventListener("submit", function(e) {
 //     });
 //   }
   
+
+  
+  
 //   function updateEventListeners() {
 //     // Re-select the elements in the DOM
-//     const toggleSortUsername = document.querySelector("#toggle-sort-username");
+    
 //     const toggleSortId = document.querySelector("#toggle-sort-id");
 //     const toggleSortFullName = document.querySelector("#toggle-sort-full-name");
 //     const toggleSortEmail = document.querySelector("#toggle-sort-email");
+//     const toggleSortUsername = document.querySelector("#toggle-sort-username");
     
   
 //     toggleSortUsername.addEventListener("click", () => {
-//         console.log("username")
+        
 //         changeArrowToDefault("username");
 //         sortStates.username = !sortStates.username;
 //         fetchSort("username", sortStates.username);
@@ -123,7 +127,7 @@ form.addEventListener("submit", function(e) {
 //         arrow.classList.remove('rotated');
 //     });
 //     // Apply the rotated class based on the stored sort state
-//     if (sortStates.full_name) {
+//     if (sortStates.username) {
 //       document.querySelector(".sort_username .material-symbols-outlined").classList.add('rotated');
 //       changeArrowToDefault("username")
 //     }
@@ -131,13 +135,15 @@ form.addEventListener("submit", function(e) {
 //       document.querySelector(".sort_id .material-symbols-outlined").classList.add('rotated');
 //       changeArrowToDefault("default")
 //     }
-//     if (sortStates.grade) {
+//     if (sortStates.email) {
 //       document.querySelector(".sort_email .material-symbols-outlined").classList.add('rotated');
 //       changeArrowToDefault("email")
 //     }
-//     if (sortStates.score) {
+//     if (sortStates.full_name) {
 //       document.querySelector(".sort_full_name .material-symbols-outlined").classList.add('rotated');
 //       changeArrowToDefault("full_name")
 //     }
 //   }
+
+// updateEventListeners()
 enableFullScreenOnKeyPress();

@@ -46,50 +46,52 @@ const updateAccount = async (req,res) => {
     
 }
 
-const sortAccount = async (req,res) => {
+// const sortAccount = async (req,res) => {
     
     
-    const {sortType, state} = req.body;
+//     const {sortType, state} = req.body;
     
-    
-    let userInfo = await Teacher.fetchEssentials();
+//     let userInfo = await Teacher.fetchEssentials();
   
-    
+//     console.log(sortType)
+//     console.log(state)
     
 
-    if(state){
+//     if(state){
 
-        switch (sortType){
-            case "full_name":
-                userInfo = userInfo.sort((a, b) => a.full_name.localeCompare(b.full_name));
-                break;
-            case "email":
-                userInfo = userInfo.sort((a, b) => a.email.localeCompare(b.email));
+//         switch (sortType){
+//             case "full_name":
+//                 userInfo = userInfo.sort((a, b) => a.full_name.localeCompare(b.full_name));
+//                 break;
+//             case "email":
+//                 userInfo = userInfo.sort((a, b) => a.email.localeCompare(b.email));
                 
-                break;
-            case "username": 
-                userInfo = userInfo.sort((a, b) => a.username.localeCompare(b.username));
-                break;
-        }
-    }
+//                 break;
+//             case "username": 
+//                 userInfo = userInfo.sort((a, b) => a.username.localeCompare(b.username));
+//                 break;
+//         }
+//     }
+
+    
     
     
     
 
   
   
-  res.render("partials/eachAccount", {teacherInfo: userInfo}, function(err, html) {
-    if (err) {
-        console.error(err);
-        res.status(500).send('Error rendering leaderboard');
-    } else {
+//   res.render("partials/accounts", {teacherInfo: userInfo}, function(err, html) {
+//     if (err) {
+//         console.error(err);
+//         res.status(500).send('Error rendering leaderboard');
+//     } else {
        
-        // Send back only the rendered HTML fragment for the leaderboard table, not an entire document.
-        res.send(html);
+//         // Send back only the rendered HTML fragment for the leaderboard table, not an entire document.
+//         res.send(html);
         
-    }
-})
+//     }
+// })
 
     
-}
+// }
 module.exports = {renderAccount, updateAccount}
