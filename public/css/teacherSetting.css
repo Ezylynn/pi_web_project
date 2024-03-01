@@ -28,7 +28,7 @@
   }
 
 ul.vertical-nav-bar{
-  background-color: rgb(95, 26, 185);
+  background-color:  rgb(55, 40, 93);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,7 +85,7 @@ ul.vertical-nav-bar{
 }
 
 .vertical-nav-bar li a.test-on{
-  background-color: rgb(65, 2, 147);
+  background-color: rgb(113, 62, 214);
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
@@ -118,9 +118,9 @@ main form div textarea{
   grid-template-columns: 50% 50%;
   grid-template-rows: auto auto auto auto;
   
-  height: 40%;
+  height: 50%;
   width: 90%;
-  background-color: rgb(95, 26, 185);
+  background-color:  rgb(55, 40, 93);
   padding: 2vh 0;
   border-radius: 0.5rem;
   
@@ -161,9 +161,9 @@ main form div textarea{
   font-size: 1.5rem;
   padding: 0.4rem 0.8rem;
   border-radius: 0.3rem;
-  background-color: rgb(171, 133, 221);
+  background-color: rgb(181, 156, 246);
   border: none;
-  color: white;
+  color: rgb(255, 255, 255);
   font-weight: 800;
   cursor: pointer;
   transition: color 0.4s, background-color 0.4s;
@@ -182,7 +182,7 @@ main form div textarea{
   
   height: 40%;
   width: 90%;
-  background-color: rgb(95, 26, 185);
+  background-color:  rgb(55, 40, 93);
   
   border-radius: 0.5rem;
   margin-top: 2vh;
@@ -211,7 +211,9 @@ main form div textarea{
 
 }
 
-
+@media (max-width:1400px){
+  
+}
 
 
 

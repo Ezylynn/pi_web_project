@@ -232,7 +232,6 @@ transition: background-color 0.4s, width 0.4s, color 0.4s, border-radius 0.4s, f
 }
 
 .overlay {
-  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
@@ -242,7 +241,7 @@ transition: background-color 0.4s, width 0.4s, color 0.4s, border-radius 0.4s, f
   display: none; 
   justify-content: center;
   align-items: center; 
-  z-index: 1000; 
+  z-index: 90; 
 }
 
 

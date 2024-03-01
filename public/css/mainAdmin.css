@@ -196,3 +196,106 @@ main{
   background-color: rgb(212, 87, 141);
 }
 
+
+@media (min-width:1920px){
+  .nav_bar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    font-size: 27px;
+  }
+
+
+  #account{
+    margin-left: auto;
+    
+  }
+  
+  #account-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    margin-top: 0.25vh;
+    line-height: 9.5vh;
+
+    
+    transition: background-color 1s;
+  }
+  
+  #account-logo:hover{
+    background-color: rgb(67, 72, 197);
+  }
+  
+  
+  #account-link:hover + #account-menu{
+    display: flex;
+    background-color: rgb(238, 96, 157);
+    border-radius: 0 0 50px 50px;
+    height: auto;
+    opacity: 1;
+  }
+  
+  #account-menu{
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: height 0.3s ease, opacity 0.3s ease;
+    background-color: rgb(238, 96, 157);
+    
+  }
+  
+  #account-menu:hover{
+    border-radius: 0 0 50px 50px;
+    height: auto;
+    opacity: 1;
+    
+  }
+  
+  #account-menu li a{
+    background-color: rgb(238, 96, 157);
+    font-size: 27px;
+    transition: 0.4s;
+  }
+  
+  #account-menu li a:hover{
+    background-color: rgb(212, 87, 141);
+  }
+}
+
+
+
+@media (min-width:1400px) and (max-width:1919px){
+
+  .nav_bar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+
+
+
+}
+
+
+@media (min-width:1024px) and (max-width:1439px){
+
+  .nav_bar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+}
+
