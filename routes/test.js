@@ -1,12 +1,12 @@
 const express = require('express');
 const {renderTest, getTime} = require("../controllers/testController")
 const testRouter = express.Router();
-const {checkAuthenticated, checkNotAuthenticated, checkRole} = require("../middleware/checkAuthenticated")
+const {checkAuthenticated, checkNotAuthenticated, checkRole, checkStatus, checkId} = require("../middleware/checkAuthenticated")
 
 
-testRouter.get("/student/test/:test/:userId", checkAuthenticated, checkRole("student"), renderTest);
+testRouter.get("/student/test/:test/:userId", checkAuthenticated, checkRole("student"), checkStatus, checkId, renderTest);
 
-testRouter.post("/student/test/:test/:userId", checkAuthenticated, checkRole("student"), getTime)
+testRouter.post("/student/test/:test/:userId", checkAuthenticated, checkRole("student"), checkStatus, checkId, getTime)
 
 
 

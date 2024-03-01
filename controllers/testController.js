@@ -1,15 +1,28 @@
 const {Test} = require("../models/pi_test")
+const {TestResult} = require("../models/result")
 const {convertToTimeFormat, subtractTimes} = require("../utils/getAttemptTime")
 const renderTest = async (req,res) => {
     try{
         const test = await Test.find({test_name: "Pi Test"})
+        let status;
+        const {role} = req.user
+        if (role === "student"){
+            let userObject = await TestResult.findByStudentId(req.user.user_id)
+        
+            if (!userObject){
+                status = "not done";
+            }else{
+                status = userObject.status;
+            
+            }   
+        }
     
         const testCode = test.getTestCode()
         
     
-        const {role} = req.user
+       
         const {user_id} = req.user
-        res.render("test", {userRole: role, user: req.user, user_id})
+        res.render("test", {userRole: role, user: req.user, user_id, status})
 
     }catch(err){
         throw err

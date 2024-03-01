@@ -50,11 +50,21 @@
                     </ul>
                 </li>
                 <% if (userRole === "student"){ %>
-                    <li>
-                        <a href="/api/v1/student/instruction">
-                            <p class="underline-text-small">Quiz</p>
-                        </a>
-                    </li>
+                    <% if (status === "not done"){ %>
+
+                        <li>
+                            <a href="/api/v1/student/instruction">
+                                <p class="underline-text-small">Quiz</p>
+                            </a>
+                        </li>
+                    <% }else{ %>
+                        <li>
+                            <a href="/api/v1/student/pi-test/result/<%= status %>/<%= user.user_id %>">
+                                <p class="underline-text-small">Quiz</p>
+                            </a>
+                        </li>
+
+                        <% } %>
                     <% }else if (userRole === "teacher" || userRole === "superadmin"){ %>
                         <li>
                             <a href="/api/v1/<%= userRole%>/leaderboard">

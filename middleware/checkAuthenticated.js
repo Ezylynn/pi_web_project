@@ -1,4 +1,5 @@
-const {Student} = require("../models/students_info")
+const {Student} = require("../models/students_info");
+const {TestResult} = require("../models/result")
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         next();
@@ -58,4 +59,34 @@ const ensureUniqueAccount = (...valueToCheck) => async (req,res,next) => {
     next()
 }
 
-module.exports = { checkAuthenticated,checkNotAuthenticated, checkRole, ensureUniqueAccount, enhancedCheckRole};
+const checkStatus =  async (req,res,next) => {
+    const {role} = req.user;
+ 
+    if (role === "student"){
+        let userObject = await TestResult.findByStudentId(req.user.user_id)
+        
+        if (!userObject){
+            next()
+        }else{
+            res.redirect("/api/v1/student/home")
+            
+        }   
+    }else{
+        next()
+    }
+}
+
+const checkId = (req,res,next) => {
+    const {user_id} = req.user;
+    const {userId} = req.params;
+    if (user_id == userId){
+        console.log(user_id)
+        console.log(userId)
+        console.log("I'm here")
+        next()
+    }else{
+        res.redirect("/api/v1/student/home")
+    }
+}
+
+module.exports = { checkAuthenticated,checkNotAuthenticated, checkRole, ensureUniqueAccount, enhancedCheckRole, checkStatus, checkId};

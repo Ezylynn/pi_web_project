@@ -1,9 +1,20 @@
 const {Student} = require("../models/students_info")
 const {rankingPiAnswers} = require("../utils/piCalculate")
-const {convertISO} = require("../utils/getAttemptTime")
+const {convertISO} = require("../utils/getAttemptTime");
+const {TestResult} = require("../models/result")
 const { sortByClass, sortById, sortByName, sortByScore} = require("../utils/sort")
 const renderLeaderboard = async (req,res) => {
     const {role} = req.user;
+    let status;
+    if (role === "student"){
+        let userObject = await TestResult.findByStudentId(req.user.user_id)
+        
+        if (!userObject){
+            status = "not done";
+        }else{
+            status = userObject.status;
+        }   
+    }
     
     let userInfo = await Student.fetchEssentials();
     userInfo = userInfo.filter(user => user.role === "student")
@@ -19,7 +30,7 @@ const renderLeaderboard = async (req,res) => {
 
   
   
-  res.render("leaderboard", {userRole: role, user: req.user, studentRank: userInfoUpdated})
+  res.render("leaderboard", {userRole: role, user: req.user, studentRank: userInfoUpdated, status})
 }
 
 const sortLeaderboard = async (req,res) => {
