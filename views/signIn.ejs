@@ -86,18 +86,19 @@
                         <input type="password" class="pass" name="password" placeholder="Password" required>
                     </label>
                 </div>
+
+                <p class="login_prompt">Login as:</p>
         
-                <div>
-                    <p class="login_prompt">Login as:</p>
-        
+                <div class="radio-container">
+    
                     <label class="student" for="student">
                         <input type="radio" id="student" name="role" value="student" required>
-                        Student
+                        <span>Student</span>
                     </label>
         
                     <label class="teacher" for="teacher">
                         <input type="radio" id="teacher" name="role" value = "teacher" required>
-                        Teacher
+                        <span>Teacher</span>
                     </label>
                 
                 </div>
@@ -106,6 +107,9 @@
                     <button class="reset" type="reset">Reset</button>
                     <button class="submit" type="submit">Submit</button>
                 </div>
+
+                <p class="not_user">Don't have an account? <a href="/api/v1/register">Sign up here</a></p> 
+                <!-- add api register  -->
             
 
 

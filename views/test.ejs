@@ -13,6 +13,7 @@
     <% }else if (userRole === "superadmin"){ %>
         <link rel="stylesheet" href="/css/mainSuperAdmin.css">
     <% } %>
+    <link rel="stylesheet" href="/css/mainUser.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/test.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -111,7 +112,8 @@
 
     </header>
 
-    <main  class="bg layer">
+
+    <main class="bg layer">
 
         <div class = "timer"></div>
         <input type="hidden" class = "userId" value = <%= user_id %>>
@@ -152,6 +154,9 @@
         
 
     </main>
+
+
+
     <div id="overlay" class="overlay">
         <div class="centered-message">
           Please do not navigate away from the test.
