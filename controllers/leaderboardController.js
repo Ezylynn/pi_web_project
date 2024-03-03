@@ -36,8 +36,6 @@ const renderLeaderboard = async (req,res) => {
 const sortLeaderboard = async (req,res) => {
     const {role} = req.user;
     const {sortType, state} = req.body;
-    console.log(sortType)
-    console.log(state)
     
     let userInfo = await Student.fetchEssentials();
     userInfo = userInfo.filter(user => user.role === "student")

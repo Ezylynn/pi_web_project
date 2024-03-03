@@ -46,7 +46,7 @@ const getTime = async (req,res) => {
             res.status(403).json({message: "Invalid Test Code"})
         }
         
-        // Ensure that we are getting the start_time and end_time correctly.
+        
         
     }catch(err){
         throw err

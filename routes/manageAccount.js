@@ -6,7 +6,7 @@ const manageAccountRouter = express.Router();
 
 manageAccountRouter.get("/:userRole/manage-account", checkAuthenticated, checkRole("superadmin"), renderAccount);
 manageAccountRouter.post("/:userRole/manage-account", checkAuthenticated, checkRole("superadmin"), updateAccount);
-// manageAccountRouter.put("/:userRole/manage-account/sort", checkAuthenticated, checkRole("superadmin"), sortAccount);
+
 
 
 module.exports = {manageAccountRouter}

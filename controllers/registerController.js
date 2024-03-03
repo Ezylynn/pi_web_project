@@ -9,7 +9,7 @@ const renderRegister = (req,res) => {
 const createUser = async (req,res) => {
     try{
         const {fullname, grade, email, username, password} = req.body;
-        console.log(username + "recieved")
+        
         const newUser = new User({
             role: "student",
             username: username,
@@ -25,7 +25,7 @@ const createUser = async (req,res) => {
             grade: grade
         })
         await newStudent.save();
-        console.log(username + "recieved")
+       
         res.redirect("/api/v1/sign-in")
     }catch(err){
         res.redirect("/api/v1/register")

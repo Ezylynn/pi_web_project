@@ -97,6 +97,10 @@ main{
   border-bottom-right-radius: 50px; /* Rounded bottom-right corner */
 }
 
+#log-out{
+  cursor: pointer;
+}
+
 /* .user_cf{
     z-index: 5;
     font-size: 16px;

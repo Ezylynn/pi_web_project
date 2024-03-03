@@ -17,6 +17,6 @@ superAdminLoginRouter.post("/superadmin/login", checkNotAuthenticated, passport.
     res.redirect(`/api/v1/superadmin/home`)
 })
 
-// superAdminLoginRouter.delete("/superadmin/log-out" ,superAdminLogOut)
+
 
 module.exports = {superAdminLoginRouter }

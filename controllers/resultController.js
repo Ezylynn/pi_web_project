@@ -19,8 +19,7 @@ const processResult = async (req,res) => {
         
         let time = await Test.find({test_name: transformText(test)})
         
-        console.log(`Answer: ${studentAnswer}`)
-        console.log(remainingTime)
+        
         
         const fullTime = subtractTimes(convertToTimeFormat(time.start_time), convertToTimeFormat(time.end_time))
         

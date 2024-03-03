@@ -93,6 +93,9 @@ main{
   border-bottom-left-radius: 50px; /* Rounded bottom-left corner */
   border-bottom-right-radius: 50px; /* Rounded bottom-right corner */
 }
+#log-out{
+  cursor: pointer;
+}
 
 
 
