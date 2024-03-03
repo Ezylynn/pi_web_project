@@ -13,8 +13,8 @@
     <% }else if (userRole === "superadmin"){ %>
         <link rel="stylesheet" href="/css/mainSuperAdmin.css">
     <% } %>
-    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/cheat.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     
@@ -109,12 +109,23 @@
     </header>
 
     <main  class="bg layer">
+
+        <div class="cheat-message">
+            <h1><%= status === "suspended"? "You have been suspended.": "Test Finished."%></h1>
+
+        </div>
         
-            <h1 class = "cheat-message"><%= status === "suspended"? "You have been suspended.": "Test Finished."%></h1>
+            
         
         
       
     </main>
+
+
+
+
+
+    
     <footer class="footer">
 
         <p>Made by BVIS students</p>
