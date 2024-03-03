@@ -183,6 +183,7 @@
 
 
 .start-quiz{
+    margin-top: 2vh;
     border: none;
     background-color: transparent;
     
@@ -249,40 +250,134 @@
 
 
 .bg{
-    z-index: -1;
-    aspect-ratio: 1439/730;
-    width: 100%;
-    margin-top: 10vh;
-    height: auto;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 70vh;
+  margin-top: 10vh;
+  height: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
-  }
-
-.layer{
-    background-image: url('/images/blob-scene1.svg');
-  }
-
-
-
-
-
-
-
-.footer{
-    margin-top: -5vh;
-    position: absolute;
-    width: 100vw;
-    height: 20vh;
-    background-color:  rgb(96, 100, 238);
 }
 
-.footer p{
-    font-weight: bolder;
-    color: white;
-    margin-top: 8vh;
-    font-size: 20px;
-    text-align: center;
+.layer{
+  background-image: url('/images/blob-scene1.svg');
+}
 
+
+
+
+
+
+
+  
+.footer {
+  display: flex; /* Use flexbox to align children */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  position: relative; /* Changed from absolute to relative */
+  width: 100%;
+  background-color: rgb(96, 100, 238);
+  bottom: 0; /* Ensures footer sticks to the bottom */
+  left: 0; /* Aligns footer to the left edge */
+}
+
+.footer p {
+  margin: 0; /* Removes margin to center text properly */
+  font-weight: bolder;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+
+@media only screen and (min-device-width: 600px) and (max-device-width: 799px){
+  .parent_container{
+    width: 100%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  }
+
+
+}
+
+
+@media only screen and (min-device-width: 800px) and (max-device-width: 1023px){
+
+  .parent_container{
+    width: 100%;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+  }
+
+}
+
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1280px) {
+
+  .parent_container{
+    width: 100%;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+  }
+
+
+}
+
+
+@media only screen and (min-device-width: 1281px) and (max-device-width: 1439px){
+
+  .parent_container{
+    width: 100%;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+  }
+
+}
+
+
+
+@media only screen and (min-device-width: 1440px) and (max-device-width: 1919px) {
+  .pi{
+    font-size: 35px;
+    font-family: 'Times New Roman';
+  }
+
+
+  .parent_container{
+    width: 100%;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+  }
+
+  .parent_container .container ul li{
+    font-size: 22px;
+  }
+
+}
+
+
+@media only screen and (min-device-width: 1920px){
+
+  .pi{
+    font-size: 45px;
+    font-family: 'Times New Roman';
+  }
+
+
+  .parent_container{
+    width: 100%;
+    margin-top: 0.5vh;
+    margin-bottom: 10vh;
+  }
+
+
+  .parent_container .container ul li{
+    font-size: 24px;
+  }
+
+  
 }

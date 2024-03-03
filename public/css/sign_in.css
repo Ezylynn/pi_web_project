@@ -40,15 +40,10 @@
 
 
 .container{
-  
   display: flex;
   justify-content: center;
   align-items: center;
   width: 27%;
-  height: auto;
-  
-  
-;
   padding-top: 5vh;
   padding-bottom: 5vh;
   border: none;
@@ -89,13 +84,22 @@ input[type="text"], input[type="email"], input[type="password"] {
   font-size: 17px;
 }
 
-input[type="radio"] {
+.radio-container{
+
+  width: 100%;
+  display: flex;
   text-align: center;
-  transform: scale(1.1); /* Adjust the scale value as per yer preference */
-  margin-left: 3vw;
-  display: inline-block;
-  vertical-align: middle;
+  align-items: center;
+  justify-content: space-around;
+
 }
+
+
+input[type="radio"] {
+  margin: auto;
+
+}
+
 
 .login_prompt{
   font-size: 20px;
@@ -146,7 +150,6 @@ button[type="submit"]:hover, button[type="reset"]:hover{
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 1439/720;
   width: 100vw;
   height: 70vh;
   margin-top: 10vh;
@@ -160,6 +163,28 @@ button[type="submit"]:hover, button[type="reset"]:hover{
 .layer{
   background-image: url('/images/blob-scene1.svg');
 }
+
+
+
+
+.not_user{
+  color: rgb(104, 104, 104);
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: 550;
+
+}
+
+.not_user a{
+  color: rgb(104, 104, 104);
+  text-decoration: none;
+}
+
+.not_user a:hover{
+  text-decoration: underline;
+}
+
+
 
 
 .footer{
@@ -176,5 +201,272 @@ button[type="submit"]:hover, button[type="reset"]:hover{
     margin-top: 8vh;
     font-size: 20px;
     text-align: center;
+
+}
+
+
+
+/* For tablets in portrait orientation */
+@media only screen and (min-device-width: 600px) and (max-device-width: 799px)  {
+  .container {
+    margin-top: 10vh;
+    margin-bottom: 15vh;
+    width: 50%; /* Adjust the width for portrait tablets */
+  }
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%; /* Adjust input fields width */
+  }
+  button[type="submit"], button[type="reset"] {
+    width: 70%; /* Adjust buttons width */
+  }
+
+  .bg {
+    aspect-ratio: auto; /* Remove the fixed aspect ratio */
+  }
+
+  .footer {
+    display: flex; /* Use flexbox to align children */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    position: relative; /* Changed from absolute to relative */
+    width: 100%;
+    background-color: rgb(96, 100, 238);
+    bottom: 0; /* Ensures footer sticks to the bottom */
+    left: 0; /* Aligns footer to the left edge */
+}
+
+.footer p {
+    margin: 0; /* Removes margin to center text properly */
+    font-weight: bolder;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+
+}
+
+/* For tablets in landscape orientation */
+@media only screen and (min-device-width: 800px) and (max-device-width: 1023px){
+  .container {
+    width: 38%; /* Adjust the width for landscape tablets */
+    margin-top: 10vh;
+    margin-bottom: 15vh;
+  }
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%; /* Adjust input fields width */
+  }
+  button[type="submit"], button[type="reset"] {
+    width: 70%; /* Adjust buttons width */
+  }
+
+  .bg {
+    aspect-ratio: auto; /* Remove the fixed aspect ratio */
+  }
+
+  .footer {
+    display: flex; /* Use flexbox to align children */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    position: relative; /* Changed from absolute to relative */
+    width: 100%;
+    background-color: rgb(96, 100, 238);
+    bottom: 0; /* Ensures footer sticks to the bottom */
+    left: 0; /* Aligns footer to the left edge */
+}
+
+.footer p {
+    margin: 0; /* Removes margin to center text properly */
+    font-weight: bolder;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+}
+
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1280px) {
+  .container {
+    width: 35%; /* Adjust the width as needed */
+    min-height: 30vh; /* Adjust the minimum height as needed */
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    /* Additional styling */
+  }
+  /* Other responsive adjustments */
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%; /* Adjust input fields width */
+  }
+  button[type="submit"], button[type="reset"] {
+    width: 70%; /* Adjust buttons width */
+  }
+
+  .bg {
+    aspect-ratio: auto; /* Remove the fixed aspect ratio */
+  }
+
+  .footer {
+    display: flex; /* Use flexbox to align children */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    position: relative; /* Changed from absolute to relative */
+    width: 100%;
+    background-color: rgb(96, 100, 238);
+    bottom: 0; /* Ensures footer sticks to the bottom */
+    left: 0; /* Aligns footer to the left edge */
+}
+
+.footer p {
+    margin: 0; /* Removes margin to center text properly */
+    font-weight: bolder;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+}
+
+/* For medium laptops - screens up to 1440px wide */
+@media only screen and (min-device-width: 1281px) and (max-device-width: 1439px) {
+  .container {
+    width: 45%; /* Adjust the width as needed */
+    min-height: 30vh; /* Adjust the minimum height as needed */
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    /* Additional styling */
+  }
+  /* Other responsive adjustments */
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%; /* Adjust input fields width */
+  }
+  button[type="submit"], button[type="reset"] {
+    width: 70%; /* Adjust buttons width */
+  }
+
+  .bg {
+    aspect-ratio: auto; /* Remove the fixed aspect ratio */
+  }
+
+  .footer {
+    display: flex; /* Use flexbox to align children */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    position: relative; /* Changed from absolute to relative */
+    width: 100%;
+    background-color: rgb(96, 100, 238);
+    bottom: 0; /* Ensures footer sticks to the bottom */
+    left: 0; /* Aligns footer to the left edge */
+}
+
+.footer p {
+    margin: 0; /* Removes margin to center text properly */
+    font-weight: bolder;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+}
+
+
+/* For large laptops - screens up to 1920px wide */
+@media only screen and (min-device-width: 1440px) and (max-device-width: 1919px) {
+  .pi{
+    font-size: 35px;
+    font-family: 'Times New Roman';
+  }
+
+
+  .container {
+    width: 25%; /* Adjust the width for landscape tablets */
+    margin-top: 15vh;
+    margin-bottom: 25vh;
+  }
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%; /* Adjust input fields width */
+
+  }
+  button[type="submit"], button[type="reset"] {
+    width: 80%; /* Adjust buttons width */
+  }
+
+
+
+  
+
+  .bg {
+    aspect-ratio: auto; /* Remove the fixed aspect ratio */
+  }
+
+  .footer {
+    display: flex; /* Use flexbox to align children */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    position: relative; /* Changed from absolute to relative */
+    width: 100%;
+    background-color: rgb(96, 100, 238);
+    bottom: 0; /* Ensures footer sticks to the bottom */
+    left: 0; /* Aligns footer to the left edge */
+}
+
+.footer p {
+    margin: 0; /* Removes margin to center text properly */
+    font-weight: bolder;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+}
+
+
+@media only screen and (min-device-width: 1920px)  {
+
+  .pi{
+    font-size: 45px;
+    font-family: 'Times New Roman';
+  }
+
+
+  .container {
+    width: 25%; /* Adjust the width for landscape tablets */
+    margin-top: 15vh;
+    margin-bottom: 25vh;
+  }
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%; /* Adjust input fields width */
+
+  }
+  button[type="submit"], button[type="reset"] {
+    width: 80%; /* Adjust buttons width */
+  }
+
+
+
+  
+
+  .bg {
+    aspect-ratio: auto; /* Remove the fixed aspect ratio */
+  }
+
+  .footer {
+    display: flex; /* Use flexbox to align children */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    position: relative; /* Changed from absolute to relative */
+    width: 100%;
+    background-color: rgb(96, 100, 238);
+    bottom: 0; /* Ensures footer sticks to the bottom */
+    left: 0; /* Aligns footer to the left edge */
+}
+
+.footer p {
+    margin: 0; /* Removes margin to center text properly */
+    font-weight: bolder;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
 
 }

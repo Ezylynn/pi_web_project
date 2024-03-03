@@ -235,6 +235,7 @@ background-color:rgb(153, 130, 209);
 @media (min-width:1920px){
       
 .bg{
+
     
   aspect-ratio: 1920/1080;
   width: auto;
@@ -257,7 +258,7 @@ background-color:rgb(153, 130, 209);
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    width: 90%;
+    width: 70%;
     height: 75vh;
     background-color: rgb(55, 40, 93);
     padding-bottom: 3rem;
@@ -431,7 +432,7 @@ background-color:rgb(153, 130, 209);
 
 
 /* laptop L 1440px-930px */
-@media (min-width:1440px) and (max-width:1919){
+@media (min-width:1440px) and (max-width:1919px){
 
 
 

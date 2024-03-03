@@ -1,41 +1,100 @@
-.bg{
-    
-    aspect-ratio: 1439/710;
-    width: 100%;
-    margin-top: 9vh;
-    height: auto;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-  
-  }
-  
-  .layer{
-    background-image: url('/images/stacked1.svg');
-  }
-
-  .footer{
-    margin-top: -5vh;
-    position: absolute;
-    width: 100vw;
-    height: 20vh;
-    background-color:  rgb(96, 100, 238);
+.pi{
+  font-size: 30px;
+  font-family: 'Times New Roman';
 }
 
-.footer p{
-    font-weight: bolder;
-    color: white;
-    margin-top: 8vh;
-    font-size: 20px;
-    text-align: center;
 
+.bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw; /* Full width of the viewport */
+  min-height: 70vh; /* Minimum height of 70% of the viewport height */
+  height: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+  
+.layer{
+    background-image: url('/images/stacked1.svg')
 }
 
-.cheat-message{
+
+.footer p {
+  margin: 0; /* Removes margin to center text properly */
+  font-weight: bolder;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+
+.cheat-message h1{
     color: white;
     font-size: 3rem;
+}
+
+
+
+@media only screen and (min-device-width: 600px) and (max-device-width: 799px){
+  .cheat-message{
+    margin-top: 50vh;
+    margin-bottom: 55vh;
+  }
+  
+}
+
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1280px) {
+
+  .cheat-message{
+    margin-top: 50vh;
+    margin-bottom: 50vh;
+  }
+
+}
+
+
+@media only screen and (min-device-width: 1281px) and (max-device-width: 1439px){
+
+
+  .cheat-message{
+    margin-top: 50vh;
+    margin-bottom: 50vh;
+  }
+
+}
+
+
+
+@media only screen and (min-device-width: 1440px) and (max-device-width: 1919px) {
+  .pi{
+    font-size: 35px;
+    font-family: 'Times New Roman';
+  }
+
+
+  .cheat-message{
+    margin-top: 50vh;
+    margin-bottom: 50vh;
+  }
+
+}
+
+
+
+@media only screen and (min-device-width: 1920px){
+
+  .pi{
+    font-size: 45px;
+    font-family: 'Times New Roman';
+  }
+
+
+  .cheat-message{
+    margin-top: 50vh;
+    margin-bottom: 50vh;
+  }
+
 }
