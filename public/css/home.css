@@ -75,7 +75,7 @@ main.home{
   font-size: 40px;
   text-align: center;
   font-weight: bolder;
-  margin-top: -45vh;
+  
 }
 
 .pi_symbol_title_2{
@@ -136,7 +136,7 @@ main.home{
 .pi-info{
   position: absolute;
   z-index: 15;
-  bottom: 15%;
+  bottom: 45%;
   
 }
 
