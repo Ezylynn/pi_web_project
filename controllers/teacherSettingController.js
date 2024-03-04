@@ -22,8 +22,7 @@ const updateTest = async (req,res) => {
 
         if (page === "test"){
             const {test_date, start_time, end_time, test_name} = req.body;
-            console.log(`${test_date} ${start_time}`)
-            console.log(`${test_date} ${end_time}`);
+            
 
             await Test.update(test_name, {test_date, start_time: `${test_date} ${start_time}`, end_time: `${test_date} ${end_time}`})
         }

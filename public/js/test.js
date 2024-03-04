@@ -118,14 +118,18 @@ function redirectToResult(result){
     .catch(err => console.error("Error:", err));
 }
 
-function displayWarningMessage(message){
-    overlayMessage.style.display = "flex";
-    centeredMessage.innerText = message;
-    centeredMessage.appendChild(document.createTextNode(" Press "))
-    centeredMessage.appendChild(strongElement);
-    centeredMessage.appendChild(document.createTextNode(" To Re-Enter Fullscreen."))
-
-    
+function displayWarningMessage(message) {
+    if (overlayMessage && centeredMessage) {
+        // Make sure the overlay and the message elements are available
+        overlayMessage.style.display = "flex"; // Show the overlay
+        
+        centeredMessage.innerText = message; // Set the warning message
+        centeredMessage.appendChild(document.createTextNode(" Press "));
+        centeredMessage.appendChild(strongElement);
+        centeredMessage.appendChild(document.createTextNode(" To Re-Enter Fullscreen."));
+    } else {
+        console.error('Overlay elements are not found.');
+    }
 }
 
 function warnToFullscreenChange(event){
