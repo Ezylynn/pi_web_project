@@ -1,8 +1,16 @@
-
+main.home{
+  overflow: visible;
+  
+  padding: 0;
+  height: auto;
+  position: relative;
+}
 .banner{
   width: 100%;
-  margin-top: -75vh;
-  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .title_1{
@@ -33,14 +41,13 @@
   width: 55%;
   height: auto;
   font-size: 20px;
-  margin-top: 2.5vh;
-  margin-left: 22vw;
+  
   font-weight: 500;
 }
 
 
 .spacer_1{
-  aspect-ratio: 960/560;
+  aspect-ratio: 1200/560;
   width: 100%;
   margin-top: 10vh;
   background-repeat: no-repeat;
@@ -53,26 +60,15 @@
   background-image: url('/images/layered-waves-haikei.svg');
 }
 
-.spacer_2{
-  aspect-ratio: 960/100;
-  width: 100%;
-  margin-top: -5vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-.layer_2{
-  background-image: url('/images/wave-haikei_2.svg');
-}
 
 
 
 
-.container{
-  z-index: 4;
-  margin-top: -60vh;
-}
+
+
+
+
+
 
 .title_2{
   color: white;
@@ -101,9 +97,11 @@
 }
 
 .spacer_3{
-  aspect-ratio: 1439/600;
+  
   width: 100%;
-  margin-top: 20vh;
+  position: relative;
+  
+  aspect-ratio: 1439/600;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -114,15 +112,39 @@
   background-image: url('/images/wave3.svg');
 }
 
+
+
 .flip{
 
-  z-index: 0;
   aspect-ratio: 1439/600;
   width: 100%;
-  margin-top: -35.5vh;
+  
   transform: rotate(180deg);
+  position: absolute;
+  z-index: 5;
+  bottom: 0;
+ 
   clip-path: inset(0 0 45vh 0);
+  
 
+}
+.blob{
+  position: absolute;
+  z-index: 10;
+}
+
+.pi-info{
+  position: absolute;
+  z-index: 15;
+  bottom: 15%;
+  
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 
@@ -130,10 +152,12 @@
 
 
 .footer{
-    position: absolute;
+    display: block;
     width: 100vw;
     height: 20vh;
     background-color:  rgb(96, 100, 238);
+    margin: 0;
+   
 }
 
 .footer p{
