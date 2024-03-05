@@ -1,13 +1,13 @@
 require("dotenv").config()
 const express = require('express');
-
+const PORT = process.env.PORT || 3000;
 const path = require('path');
 const {passport} = require("./config/passportConfig");
 const session = require("express-session");
 const {rootRouter} = require('./routes/root');
 const app = express();
-const port = 3000;
 
+app.set('trust proxy', true);
 app.use(express.json())
 app.use(express.urlencoded({extended: false}));
 app.use(session({
@@ -24,6 +24,6 @@ app.use(express.static(path.join(__dirname, "public")))
 app.use("/api/v1", rootRouter);
 
 
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log(`Server is listening to port ${port}`)
 })

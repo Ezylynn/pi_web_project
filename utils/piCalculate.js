@@ -1,5 +1,5 @@
 
-const fsPromises = require("fs/promises");
+const fsPromises = require("fs").promises;
 const path = require("path");
 
 const rankingPiAnswers = async (studentAnswers) => {
