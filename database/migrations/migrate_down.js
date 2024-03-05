@@ -1,13 +1,8 @@
-const { Client } = require('pg');
+const { pool } = require("../database")
 
+const client = pool.connect()
 // Database connection configuration
-const client = new Client({
-    user: 'ucmdd6kjir19nm',
-    host: 'cdgn4ufq38ipd0.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com',
-    database: 'dat103ndv56f4k',
-    password: 'pc4a341cdc507936e928948fc33890b3791688b0bff625ccef4f333a89e2c4e4b',
-    port: 5432,
-});
+
 
 async function migrateDown() {
     try {
@@ -27,7 +22,7 @@ async function migrateDown() {
     } catch (error) {
         console.error('Error executing migration down:', error);
     } finally {
-        await client.end();
+        await client.release();
     }
 }
 
