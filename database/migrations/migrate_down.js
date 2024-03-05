@@ -23,7 +23,7 @@ async function migrateDown() {
     } catch (error) {
         console.error('Error executing migration down:', error);
     } finally {
-        await client.release();
+        client.release();
     }
 }
 

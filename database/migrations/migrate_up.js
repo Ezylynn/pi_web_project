@@ -56,7 +56,7 @@ async function migrateUp() {
     } catch (error) {
         console.error('Error executing migration up:', error);
     } finally {
-        await client.release();
+        client.release();
     }
 }
 
