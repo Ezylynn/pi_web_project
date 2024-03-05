@@ -25,5 +25,5 @@ app.use("/api/v1", rootRouter);
 
 
 app.listen(PORT, () => {
-    console.log(`Server is listening to port ${port}`)
+    console.log(`Server is listening to port ${PORT}`)
 })
