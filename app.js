@@ -7,7 +7,7 @@ const session = require("express-session");
 const {rootRouter} = require('./routes/root');
 const app = express();
 
-app.set('trust proxy', true);
+
 app.use(express.json())
 app.use(express.urlencoded({extended: false}));
 app.use(session({
