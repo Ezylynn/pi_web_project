@@ -46,18 +46,32 @@ const enhancedCheckRole = (roleToExclude) => (req, res, next) => {
     next();
 };
 
-const ensureUniqueAccount = (...valueToCheck) => async (req,res,next) => {
-    const storedValue = await Student.fetchEssentials()
-    for (let i = 0; i < valueToCheck.length; i++){
-        for (let j = 0; j < storedValue.length; j++){
-            if (req.body[valueToCheck[i]] === storedValue[j][valueToCheck[i]]){
-                console.log("redirected")
-                return res.redirect("/api/v1/register")
-            }
+const ensureUniqueAccount = (...valueToCheck) => async (req, res, next) => {
+    try {
+        const storedValue = await Student.fetchEssentials();
+
+        // If no stored values, proceed to next middleware
+        if (!storedValue) {
+            return next();
         }
+
+        // Check for uniqueness of values
+        const isUnique = valueToCheck.some(field => {
+            return storedValue.some(record => req.body[field] === record[field]);
+        });
+
+        if (isUnique) {
+            console.log("Redirected due to duplicate values");
+            return res.redirect("/api/v1/register");
+        }
+
+        next();
+    } catch (error) {
+        // Handle any errors that occur during database fetching
+        console.error("Error in ensureUniqueAccount middleware:", error);
+        res.status(500).send("Internal Server Error");
     }
-    next()
-}
+};
 
 const checkStatus =  async (req,res,next) => {
     const {role} = req.user;
