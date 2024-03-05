@@ -3,7 +3,7 @@ const { pool } = require("../database")
 
 
 async function migrateUp() {
-    const client = pool.connect()
+    const client = await pool.connect()
     try {
         
 

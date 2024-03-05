@@ -5,7 +5,7 @@ const { pool } = require("../database")
 
 
 async function migrateDown() {
-    const client = pool.connect()
+    const client = await pool.connect()
     try {
        
 
