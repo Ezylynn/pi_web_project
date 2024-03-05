@@ -1,0 +1,10 @@
+{
+    "migrationDirectory": "migrations",
+    "driver": "pg",
+    "host": "cdgn4ufq38ipd0.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com",
+    "port": 5432,
+    "database": "dat103ndv56f4k",
+    "user": "ucmdd6kjir19nm",
+    "password": "pc4a341cdc507936e928948fc33890b3791688b0bff625ccef4f333a89e2c4e4b",
+    "ssl": true
+  }
