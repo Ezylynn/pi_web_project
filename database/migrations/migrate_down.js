@@ -1,12 +1,13 @@
 const { pool } = require("../database")
 
-const client = pool.connect()
+
 // Database connection configuration
 
 
 async function migrateDown() {
+    const client = pool.connect()
     try {
-        await client.connect();
+       
 
         // Migration down logic
         await client.query(`

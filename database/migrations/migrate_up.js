@@ -1,10 +1,11 @@
 const { pool } = require("../database")
 
-const client = pool.connect()
+
 
 async function migrateUp() {
+    const client = pool.connect()
     try {
-        await client.connect();
+        
 
         // Migration up logic
         await client.query(`
