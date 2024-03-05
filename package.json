@@ -23,8 +23,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "create-table": "node database/seeds/createTable.js",
-    "migrate": "node-pg-migrate",
+    "migrate-up": "node database/migrations/migrate_up",
+    "migrate-down": "node database/migrations/migrate_down",
     "seed-user": "node database/seeds/loginUser.js",
     "seed-admin": "node database/seeds/loginAdmin.js",
     "seed-test": "node database/seeds/createTest.js",
