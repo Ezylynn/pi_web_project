@@ -1,7 +1,7 @@
-const { use } = require("passport");
+
 const {pool} = require("../database/database");
 
-const bcrypt = require('bcrypt');
+
 
 class TestResult{
     constructor(data){

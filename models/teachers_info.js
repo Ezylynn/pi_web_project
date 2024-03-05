@@ -1,5 +1,5 @@
 const {pool} = require("../database/database")
-const bcrypt = require('bcrypt');
+
 
 class Teacher{
     constructor(data){
