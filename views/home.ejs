@@ -64,25 +64,25 @@
                         </li>
 
                         <% } %>
-                <% }else if (userRole === "teacher" || userRole === "superadmin"){ %>
-                    <li>
-                        <a href="/api/v1/<%= userRole%>/leaderboard">
-                            <p class="underline-text-small">Leaderboard</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/api/v1/<%= userRole%>/setting/test">
-                            <p class="underline-text-small">Setting</p>
-                        </a>
-                    </li>
-                <% } %>
-                <% if (userRole === "superadmin"){ %>
-                    <li>
-                        <a href="/api/v1/superadmin/manage-account">
-                            <p class="underline-text-small">Manage Account</p>
-                        </a>
-                    </li>
-                <% } %>
+                    <% }else if (userRole === "teacher" || userRole === "superadmin"){ %>
+                        <li>
+                            <a href="/api/v1/<%= userRole%>/leaderboard">
+                                <p class="underline-text-small">Leaderboard</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/api/v1/<%= userRole%>/setting/test">
+                                <p class="underline-text-small">Setting</p>
+                            </a>
+                        </li>
+                    <% } %>
+                    <% if (userRole === "superadmin"){ %>
+                        <li>
+                            <a href="/api/v1/superadmin/manage-account">
+                                <p class="underline-text-small">Manage Account</p>
+                            </a>
+                        </li>
+                    <% } %>
                 <li class = "account" id = "account">
                     <a href="/api/v1/sign-in" class = "account-link" id = "account-link"><span class="material-symbols-outlined account-logo underline-text-small" id = "account-logo">account_circle</span></a>
                     <ul class = "account-menu" id = "account-menu">
