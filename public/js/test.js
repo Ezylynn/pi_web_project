@@ -19,24 +19,48 @@ strongElement.innerText = "F";
 
 let warningTimes = 0;
 let eventHandled = false;
-function activateProtection(){
+// function activateProtection(){
+//     document.addEventListener('paste', (event) => {
+//         event.preventDefault();
+       
+//     });
+//     document.addEventListener('visibilitychange', () => {
+//         if (!eventHandled && document.visibilityState === 'hidden') {
+//             eventHandled = true;
+//             debouncedRedirectToResult("suspended");
+//         }
+//     });
+    
+//     window.addEventListener('blur', () => {
+//         if (!eventHandled) {
+//             eventHandled = true;
+//             debouncedRedirectToResult("suspended");
+//         }
+//     });
+//     document.addEventListener("fullscreenchange", warnToFullscreenChange);
+// }
+
+function activateProtection() {
     document.addEventListener('paste', (event) => {
         event.preventDefault();
-       
     });
-    document.addEventListener('visibilitychange', () => {
+
+    // Apply debounce to visibilitychange event
+    document.addEventListener('visibilitychange', debounce(() => {
         if (!eventHandled && document.visibilityState === 'hidden') {
             eventHandled = true;
-            debouncedRedirectToResult("suspended");
+            redirectToResult("suspended");
         }
-    });
-    
-    window.addEventListener('blur', () => {
+    }, 300));
+
+    // Apply debounce to blur event
+    window.addEventListener('blur', debounce(() => {
         if (!eventHandled) {
             eventHandled = true;
-            debouncedRedirectToResult("suspended");
+            redirectToResult("suspended");
         }
-    });
+    }, 300));
+
     document.addEventListener("fullscreenchange", warnToFullscreenChange);
 }
 
@@ -72,17 +96,27 @@ function fetchTime() {
         console.error(err); 
     });
 }
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+// function debounce(func, wait) {
+//     let timeout;
+//     return function executedFunction(...args) {
+//         const later = () => {
+//             clearTimeout(timeout);
+//             func(...args);
+//         };
+//         clearTimeout(timeout);
+//         timeout = setTimeout(later, wait);
+//     };
+// };
+
+function debounce(func, delay) {
+    let timeoutId = null;
+    return function (...args) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            func.apply(this, args);
+        }, delay);
     };
-};
+}
 
 const debouncedRedirectToResult = debounce((result) => {
     redirectToResult(result);
