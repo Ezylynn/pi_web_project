@@ -2,8 +2,9 @@ main{
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 100vh;
   margin-top: 10vh;
+  margin-bottom: 0;
 }
 .timer{
   float: right;
