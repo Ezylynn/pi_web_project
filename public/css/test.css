@@ -108,7 +108,7 @@ main{
   align-items: center;
   justify-content: center;
   width: 100vw; /* Full width of the viewport */
-  min-height: 70vh; /* Minimum height of 70% of the viewport height */
+  min-height: 100vh; /* Minimum height of 70% of the viewport height */
   height: auto;
   background-repeat: no-repeat;
   background-position: center;
