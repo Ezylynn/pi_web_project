@@ -3,6 +3,7 @@ main{
   align-items: center;
   justify-content: center;
   height: 80vh;
+  margin-top: 10vh;
 }
 .timer{
   float: right;
@@ -236,7 +237,7 @@ transition: background-color 0.4s, width 0.4s, color 0.4s, border-radius 0.4s, f
 }
 
 .footer p {
-  margin: 0; /* Removes margin to center text properly */
+  margin: 0; 
   font-weight: bolder;
   color: white;
   font-size: 20px;
