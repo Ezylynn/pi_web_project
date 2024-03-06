@@ -51,7 +51,7 @@ function activateProtection() {
             eventHandled = true;
             redirectToResult("suspended");
         }
-    }, 300));
+    }, 1000));
 
     // Apply debounce to blur event
     window.addEventListener('blur', debounce(() => {
@@ -59,7 +59,7 @@ function activateProtection() {
             eventHandled = true;
             redirectToResult("suspended");
         }
-    }, 300));
+    }, 1000));
 
     document.addEventListener("fullscreenchange", warnToFullscreenChange);
 }
