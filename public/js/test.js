@@ -273,6 +273,11 @@ const testCode = document.querySelector("#test-code");
 
 const submitTest = document.querySelector(".submit");
 
+    document.addEventListener('paste', (event) => {
+        event.preventDefault();
+       
+    });
+
 function fetchTime() {
     fetch(`/api/v1/student/test/pi-test/${userId.value}`, {
         method: "POST",
