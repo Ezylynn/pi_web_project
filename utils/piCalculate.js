@@ -8,7 +8,9 @@ const rankingPiAnswers = async (studentAnswers) => {
         const piBuffer = await fsPromises.readFile(piFilePath);
         
       
-        const pi = piBuffer.toString();
+        const pi = piBuffer.toString().split(" ").join("");
+        console.log(pi)
+        
 
         const leaderboard = studentAnswers.map(studentAnswer => {
             const answer = typeof studentAnswer.answer === 'string'? studentAnswer.answer: '';
@@ -52,6 +54,8 @@ const rankingPiAnswers = async (studentAnswers) => {
         throw err;
     }
 };
+
+
 
 
 
