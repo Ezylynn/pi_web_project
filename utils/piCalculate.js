@@ -15,6 +15,17 @@ const rankingPiAnswers = async (studentAnswers) => {
         const leaderboard = studentAnswers.map(studentAnswer => {
             const answer = typeof studentAnswer.answer === 'string'? studentAnswer.answer: '';
 
+            if (!answer) {
+                return {
+                    ...studentAnswer,
+                    rightPositions: [],
+                    wrongPositions: [],
+                    score: 0,
+                    percentageCorrect: "0.00",
+                    error: "Empty answer"
+                };
+            }
+
             let rightPositions = [];
             let wrongPositions = [];
             let score = 0;
